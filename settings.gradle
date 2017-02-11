@@ -1,0 +1,5 @@
+rootProject.name = 'wf4j'
+
+include 'lib'
+include 'sample'
+
