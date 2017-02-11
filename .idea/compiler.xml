@@ -2,12 +2,6 @@
 <project version="4">
   <component name="CompilerConfiguration">
     <bytecodeTargetLevel>
-      <module name="lib_main" target="1.7" />
-      <module name="lib_test" target="1.7" />
-      <module name="sample_main" target="1.5" />
-      <module name="sample_test" target="1.5" />
-      <module name="web-form-java_main" target="1.7" />
-      <module name="web-form-java_test" target="1.7" />
       <module name="wf4j_main" target="1.7" />
       <module name="wf4j_test" target="1.7" />
     </bytecodeTargetLevel>

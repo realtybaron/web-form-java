@@ -1,17 +1,118 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1d535376-1f81-430a-97be-55bee48301ee" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
+    <list default="true" id="46a04299-dc7c-4c03-a160-2822d316d5ec" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.gitignore" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/wf4j_main.iml" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules/wf4j_test.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/lib/lib.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/lib/lib_main.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/lib/lib_test.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/sample/sample.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/sample/sample_main.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/.idea/modules/sample/sample_test.iml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build.gradle" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/AbstractAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/AbstractFormAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/AbstractSimpleFormAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/AbstractWizardFormAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/AsynchronousFormAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/ContextWatch.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/DateManager.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/DatePropertyEditor.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/ErrorPacket.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/Form.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/FormBinder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/FormValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/FormValidatorUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/Pair.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/Patterns.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/QueryBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/Reflect.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/RequestBuilder.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/Requests.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/SessionWatch.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/SharedScopeVariable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/TokenizedForm.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/UserScopeVariable.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/WebPaths.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/main/com/socotech/wf4j/WebUtil.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractSimpleFormActionTest$1.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractSimpleFormActionTest$NullifyAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractSimpleFormActionTest$PostAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractSimpleFormActionTest$ValidatedAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractSimpleFormActionTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractWizardFormActionTest$MultiPageAction.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/AbstractWizardFormActionTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/ErrorPacketTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/RequestBuilderTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/TestForm.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/TestFormValidator.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/classes/test/com/socotech/wf4j/WebUtilTest.class" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/libs/lib-1.0-SNAPSHOT.jar" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/classes/com.socotech.wf4j.AbstractSimpleFormActionTest.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/css/base-style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/css/style.css" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/index.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/js/report.js" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/reports/tests/test/packages/com.socotech.wf4j.html" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/test-results/test/TEST-com.socotech.wf4j.AbstractSimpleFormActionTest.xml" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/test-results/test/binary/output.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/test-results/test/binary/output.bin.idx" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/test-results/test/binary/results.bin" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/tmp/jar/MANIFEST.MF" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/tmp/test/jar_extract_5567800440880880957_tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/tmp/test/jar_extract_578970703353146451_tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/lib/build/tmp/test/jar_extract_6673499262970134809_tmp" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/sample/build.gradle" afterPath="" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractWizardFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractWizardFormAction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AsynchronousFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AsynchronousFormAction.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/ContextWatch.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/ContextWatch.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/DateManager.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/DateManager.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/DatePropertyEditor.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/DatePropertyEditor.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/ErrorPacket.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/ErrorPacket.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Form.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Form.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormBinder.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/FormBinder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormValidator.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/FormValidator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormValidatorUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/FormValidatorUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Pair.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Pair.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Patterns.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Patterns.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/QueryBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/QueryBuilder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Reflect.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Reflect.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/RequestBuilder.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/RequestBuilder.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Requests.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Requests.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/SessionWatch.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/SessionWatch.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/SharedScopeVariable.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/SharedScopeVariable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/TokenizedForm.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/TokenizedForm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/UserScopeVariable.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/UserScopeVariable.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/WebPaths.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WebPaths.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/WebUtil.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WebUtil.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/ErrorPacketTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/ErrorPacketTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/RequestBuilderTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/RequestBuilderTest.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestForm.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/TestForm.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestFormValidator.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/TestFormValidator.java" />
+      <change type="MOVED" beforePath="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/WebUtilTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/WebUtilTest.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/cache.properties.lock" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileHashes.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/fileSnapshots.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" afterPath="$PROJECT_DIR$/.gradle/3.1/taskArtifacts/taskArtifacts.bin" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/compiler.xml" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/gradle.xml" afterPath="$PROJECT_DIR$/.idea/gradle.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules.xml" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/modules/wf4j.iml" afterPath="$PROJECT_DIR$/.idea/modules/wf4j.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/vcs.xml" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/build.gradle" afterPath="$PROJECT_DIR$/build.gradle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/settings.gradle" afterPath="$PROJECT_DIR$/settings.gradle" />
     </list>
-    <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
-    <ignored path="$PROJECT_DIR$/lib/.gradle/" />
-    <ignored path="$PROJECT_DIR$/lib/build/" />
-    <ignored path="$PROJECT_DIR$/sample/.gradle/" />
-    <ignored path="$PROJECT_DIR$/sample/build/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -31,9 +132,6 @@
   <component name="ExternalProjectsManager">
     <system id="GRADLE">
       <state>
-        <task path="$PROJECT_DIR$/lib">
-          <activation />
-        </task>
         <task path="$PROJECT_DIR$">
           <activation />
         </task>
@@ -49,81 +147,10 @@
                 <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
               </PATH_ELEMENT>
             </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="wf4j" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value=":lib" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="wf4j" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value=":lib" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Tasks" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
-              </PATH_ELEMENT>
-            </PATH>
-            <PATH>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ExternalProjectsStructure$RootNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="wf4j" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ProjectNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value=":lib" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.ModuleNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="Tasks" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode" />
-              </PATH_ELEMENT>
-              <PATH_ELEMENT>
-                <option name="myItemId" value="build" />
-                <option name="myItemType" value="com.intellij.openapi.externalSystem.view.TasksNode$1" />
-              </PATH_ELEMENT>
-            </PATH>
           </tree_state>
         </projects_view>
       </state>
     </system>
-  </component>
-  <component name="FileEditorManager">
-    <leaf />
-  </component>
-  <component name="FindInProjectRecents">
-    <findStrings>
-      <find>ControlPanelScopeVar</find>
-      <find>TextUtils.cleanNumeric(request.getParameter(name));</find>
-      <find>iCopyright</find>
-    </findStrings>
-    <replaceStrings>
-      <replace>SharedScopeVariable</replace>
-      <replace>request.getParameter(name);</replace>
-    </replaceStrings>
-    <dirStrings>
-      <dir>$PROJECT_DIR$/src/main/java/web</dir>
-    </dirStrings>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -151,16 +178,8 @@
           <value>
             <list>
               <ExternalProjectPojo>
-                <option name="name" value=":lib" />
-                <option name="path" value="$PROJECT_DIR$/lib" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
                 <option name="name" value="wf4j" />
                 <option name="path" value="$PROJECT_DIR$" />
-              </ExternalProjectPojo>
-              <ExternalProjectPojo>
-                <option name="name" value=":sample" />
-                <option name="path" value="$PROJECT_DIR$/sample" />
               </ExternalProjectPojo>
             </list>
           </value>
@@ -178,14 +197,14 @@
                 <option name="name" value="components" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of root project 'wf4j'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Assembles and tests this project and all projects that depend on it." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="buildDependents" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the sub-projects of root project 'wf4j'." />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="projects" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Assembles main classes." />
@@ -213,14 +232,14 @@
                 <option name="name" value="javadoc" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of root project 'wf4j'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
                 <option name="description" value="Assembles a jar archive containing the main classes." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="jar" />
+              </ExternalTaskPojo>
+              <ExternalTaskPojo>
+                <option name="description" value="Displays the configuration model of root project 'wf4j'. [incubating]" />
+                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
+                <option name="name" value="model" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
                 <option name="description" value="Processes main resources." />
@@ -228,7 +247,7 @@
                 <option name="name" value="processResources" />
               </ExternalTaskPojo>
               <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from root project 'wf4j' (some of the displayed tasks may belong to subprojects)." />
+                <option name="description" value="Displays the tasks runnable from root project 'wf4j'." />
                 <option name="linkedExternalProjectPath" value="$PROJECT_DIR$" />
                 <option name="name" value="tasks" />
               </ExternalTaskPojo>
@@ -305,265 +324,12 @@
             </list>
           </value>
         </entry>
-        <entry key="$PROJECT_DIR$/lib">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':lib'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':lib'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':lib'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/lib" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
-        <entry key="$PROJECT_DIR$/sample">
-          <value>
-            <list>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the components produced by project ':sample'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="components" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects that depend on it." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="buildDependents" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the sub-projects of project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="projects" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="classes" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all buildscript dependencies declared in project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="buildEnvironment" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles test classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="testClasses" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Generates Javadoc API documentation for the main source code." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="javadoc" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles a jar archive containing the main classes." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="jar" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the configuration model of project ':sample'. [incubating]" />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="model" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes main resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="processResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the tasks runnable from project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="tasks" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs the unit tests." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="test" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles main Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="compileJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the insight into a specific dependency in project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="dependencyInsight" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Runs all checks." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="check" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles the outputs of this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="assemble" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Deletes the build directory." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="clean" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Compiles test Java source." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="compileTestJava" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays all dependencies declared in project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="dependencies" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Processes test resources." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="processTestResources" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays a help message." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="help" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="build" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Assembles and tests this project and all projects it depends on." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="buildNeeded" />
-              </ExternalTaskPojo>
-              <ExternalTaskPojo>
-                <option name="description" value="Displays the properties of project ':sample'." />
-                <option name="linkedExternalProjectPath" value="$PROJECT_DIR$/sample" />
-                <option name="name" value="properties" />
-              </ExternalTaskPojo>
-            </list>
-          </value>
-        </entry>
       </map>
     </option>
     <option name="modificationStamps">
       <map>
         <entry key="$PROJECT_DIR$/../../projekt202/examsoft/phoenix-services" value="2953535790000" />
         <entry key="$PROJECT_DIR$/../RealtyBaronInc-Github" value="2964963570000" />
-        <entry key="$PROJECT_DIR$" value="5947365966000" />
         <entry key="$PROJECT_DIR$/../you-worth" value="2950071508000" />
       </map>
     </option>
@@ -581,23 +347,9 @@
                       </ExternalModuleBuildClasspathPojo>
                     </value>
                   </entry>
-                  <entry key="$PROJECT_DIR$/lib">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/lib" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
-                  <entry key="$PROJECT_DIR$/sample">
-                    <value>
-                      <ExternalModuleBuildClasspathPojo>
-                        <option name="path" value="$PROJECT_DIR$/sample" />
-                      </ExternalModuleBuildClasspathPojo>
-                    </value>
-                  </entry>
                 </map>
               </option>
-              <option name="name" value="lib" />
+              <option name="name" value="wf4j" />
               <option name="projectBuildClasspath">
                 <list>
                   <option value="$USER_HOME$/.gradle/wrapper/dists/gradle-3.1-all/ejgglywf033yp6s4x8ahmgm74/gradle-3.1/src/announce" />
@@ -745,53 +497,6 @@
       <projects_view />
     </option>
   </component>
-  <component name="IdeDocumentHistory">
-    <option name="CHANGED_PATHS">
-      <list>
-        <option value="$PROJECT_DIR$/src/main/java/web/TrimBlankLinesTag.java" />
-        <option value="$PROJECT_DIR$/src/test/java/web/ErrorPacketTest.java" />
-        <option value="$PROJECT_DIR$/src/test/java/web/WebUtilTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/ReturnUrl.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/TextUtils.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Reflect.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/AsynchronousFormAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/QueryBuilder.java" />
-        <option value="$PROJECT_DIR$/src/test/java/web/RequestBuilderTest.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Enums.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/AbstractAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/AbstractFormAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/AbstractSimpleFormAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/AbstractWizardFormAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/ContextWatch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/DateManager.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/ErrorPacket.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Form.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/FormBinder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/FormValidator.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Pair.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Patterns.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/RequestBuilder.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/Requests.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/SessionWatch.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/SharedScopeVariable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/UserScopeVariable.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/WebPaths.java" />
-        <option value="$PROJECT_DIR$/src/main/java/web/WebUtil.java" />
-        <option value="$PROJECT_DIR$/lib/build.gradle" />
-        <option value="$PROJECT_DIR$/build.gradle" />
-        <option value="$PROJECT_DIR$/settings.gradle" />
-        <option value="$PROJECT_DIR$/sample/src/java/CreditCardAction.java" />
-        <option value="$PROJECT_DIR$/sample/src/java/UploadCsvForm.java" />
-        <option value="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormValidator.java" />
-        <option value="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestFormValidator.java" />
-        <option value="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/DatePropertyEditor.java" />
-        <option value="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/CommaDelimitedStringArrayEditor.java" />
-        <option value="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractAction.java" />
-        <option value="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java" />
-        <option value="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestForm.java" />
-      </list>
-    </option>
-  </component>
   <component name="JsBuildToolGruntFileManager" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsBuildToolPackageJson" detection-done="true" sorting="DEFINITION_ORDER" />
   <component name="JsGulpfileManager">
@@ -803,7 +508,6 @@
     <option name="width" value="1440" />
     <option name="height" value="820" />
   </component>
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator currentView="ProjectPane" proportions="" version="1">
       <flattenPackages />
@@ -819,9 +523,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -834,41 +536,75 @@
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
+          <PATH>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-form-java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="web-form-java" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+            <PATH_ELEMENT>
+              <option name="myItemId" value="src" />
+              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
+            </PATH_ELEMENT>
+          </PATH>
         </subPane>
       </pane>
+      <pane id="Scope" />
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="settings.editor.selected.configurable" value="project.propVCSSupport.Mappings" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.editor" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/../../demo" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="nodejs_interpreter_path" value="/usr/local/bin/node" />
     <property name="js.eslint.eslintPackage" value="" />
     <property name="js-jscs-nodeInterpreter" value="/usr/local/bin/node" />
-    <property name="project.structure.last.edited" value="Modules" />
-    <property name="project.structure.proportion" value="0.15" />
-    <property name="project.structure.side.proportion" value="0.2" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib" />
-    </key>
-    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
-      <recent name="com.socotech" />
-    </key>
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j" />
-      <recent name="$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j" />
-      <recent name="$PROJECT_DIR$/sample/src/java" />
-      <recent name="$PROJECT_DIR$/src/main/java/web" />
-      <recent name="$PROJECT_DIR$/src/test/java/web" />
-    </key>
-  </component>
-  <component name="RunManager" selected="Gradle.AbstractSimpleFormActionTest">
-    <configuration default="false" name="web-form-java:lib [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+  <component name="RunManager" selected="Gradle.Tests in 'wf4j_test'">
+    <configuration default="false" name="web-form-java [test]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/lib" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="web-form-java [clean]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="clean" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <method />
+    </configuration>
+    <configuration default="false" name="web-form-java [build]" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
         <option name="scriptParameters" />
         <option name="taskDescriptions">
@@ -883,19 +619,19 @@
       </ExternalSystemSettings>
       <method />
     </configuration>
-    <configuration default="false" name="AbstractSimpleFormActionTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+    <configuration default="false" name="Tests in 'wf4j_test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$/lib" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--tests com.socotech.wf4j.AbstractSimpleFormActionTest" />
+        <option name="scriptParameters" value="--tests *" />
         <option name="taskDescriptions">
           <list />
         </option>
         <option name="taskNames">
           <list>
-            <option value=":lib:cleanTest" />
-            <option value=":lib:test" />
+            <option value=":cleanTest" />
+            <option value=":test" />
           </list>
         </option>
         <option name="vmOptions" />
@@ -1032,7 +768,7 @@
       <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
       <option name="ALTERNATIVE_JRE_PATH" />
       <option name="PASS_PARENT_ENVS" value="true" />
-      <module name="web-form-java" />
+      <module name="wf4j" />
       <envs />
       <method />
     </configuration>
@@ -1070,14 +806,18 @@
       <envs />
       <method />
     </configuration>
-    <list size="2">
-      <item index="0" class="java.lang.String" itemvalue="Gradle.web-form-java:lib [build]" />
-      <item index="1" class="java.lang.String" itemvalue="Gradle.AbstractSimpleFormActionTest" />
+    <list size="4">
+      <item index="0" class="java.lang.String" itemvalue="Gradle.web-form-java [test]" />
+      <item index="1" class="java.lang.String" itemvalue="Gradle.web-form-java [clean]" />
+      <item index="2" class="java.lang.String" itemvalue="Gradle.web-form-java [build]" />
+      <item index="3" class="java.lang.String" itemvalue="Gradle.Tests in 'wf4j_test'" />
     </list>
     <recent_temporary>
-      <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Gradle.AbstractSimpleFormActionTest" />
-        <item index="1" class="java.lang.String" itemvalue="Gradle.web-form-java:lib [build]" />
+      <list size="4">
+        <item index="0" class="java.lang.String" itemvalue="Gradle.Tests in 'wf4j_test'" />
+        <item index="1" class="java.lang.String" itemvalue="Gradle.web-form-java [build]" />
+        <item index="2" class="java.lang.String" itemvalue="Gradle.web-form-java [clean]" />
+        <item index="3" class="java.lang.String" itemvalue="Gradle.web-form-java [test]" />
       </list>
     </recent_temporary>
     <configuration name="&lt;template&gt;" type="TestNG" default="true" selected="false">
@@ -1094,11 +834,20 @@
     <option name="remove_strategy" value="false" />
   </component>
   <component name="TestHistory">
-    <history-entry file="AbstractSimpleFormActionTest - 2017.02.11 at 14h 06m 51s.xml">
-      <configuration name="AbstractSimpleFormActionTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="Tests_in_'wf4j_test' - 2017.02.11 at 14h 45m 28s.xml">
+      <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
     </history-entry>
-    <history-entry file="AbstractSimpleFormActionTest - 2017.02.11 at 14h 14m 00s.xml">
-      <configuration name="AbstractSimpleFormActionTest" configurationId="GradleRunConfiguration" />
+    <history-entry file="web-form-java_[test] - 2017.02.11 at 14h 42m 10s.xml">
+      <configuration name="web-form-java [test]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="web-form-java_[test] - 2017.02.11 at 14h 44m 00s.xml">
+      <configuration name="web-form-java [test]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="web-form-java_[test] - 2017.02.11 at 14h 44m 21s.xml">
+      <configuration name="web-form-java [test]" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="web-form-java_[test] - 2017.02.11 at 14h 44m 45s.xml">
+      <configuration name="web-form-java [test]" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
   <component name="ToolWindowManager">
@@ -1106,18 +855,16 @@
     <editor active="false" />
     <layout>
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="10" side_tool="false" content_ui="tabs" />
-      <window_info id="Messages" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.32905984" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
       <window_info id="Palette&#9;" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Application Servers" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="true" content_ui="tabs" />
-      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.485755" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.511396" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
+      <window_info id="Version Control" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.494302" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.57834756" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="-1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.24391988" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.2453505" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="11" side_tool="false" content_ui="tabs" />
-      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.7222222" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Gradle" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3297568" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Fabric" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -1128,6 +875,7 @@
       <window_info id="Hierarchy" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="SLIDING" type="SLIDING" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Inspection" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
     </layout>
   </component>
@@ -1140,573 +888,5 @@
   <component name="XDebuggerManager">
     <breakpoint-manager />
     <watches-manager />
-  </component>
-  <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/Controller.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="195">
-          <caret line="35" column="22" lean-forward="false" selection-start-line="35" selection-start-column="22" selection-end-line="35" selection-end-column="22" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/ImageCaptchaServlet.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="23" column="13" lean-forward="false" selection-start-line="23" selection-start-column="13" selection-end-line="23" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/Mode.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1000">
-          <caret line="21" column="12" lean-forward="false" selection-start-line="21" selection-start-column="12" selection-end-line="21" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/IAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="18" column="17" lean-forward="false" selection-start-line="18" selection-start-column="17" selection-end-line="18" selection-end-column="17" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/ErrorPacketTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/WebUtilTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="0" lean-forward="false" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
-          <folding>
-            <element signature="n#!!doc" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/ReturnUrl.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="13" column="15" lean-forward="true" selection-start-line="13" selection-start-column="15" selection-end-line="13" selection-end-column="15" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/TextUtils.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="216">
-          <caret line="199" column="23" lean-forward="false" selection-start-line="199" selection-start-column="23" selection-end-line="199" selection-end-column="23" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.json/json/20131018/732c3955fe61046da31f6a024227f37d9ff3fbc3/json-20131018-sources.jar!/org/json/JSONObject.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="269">
-          <caret line="97" column="44" lean-forward="false" selection-start-line="97" selection-start-column="44" selection-end-line="97" selection-end-column="44" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.json/json/20131018/732c3955fe61046da31f6a024227f37d9ff3fbc3/json-20131018-sources.jar!/org/json/JSONArray.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1080">
-          <caret line="79" column="13" lean-forward="false" selection-start-line="79" selection-start-column="13" selection-end-line="79" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Reflect.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="64" lean-forward="false" selection-start-line="24" selection-start-column="64" selection-end-line="24" selection-end-column="64" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AsynchronousFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="290">
-          <caret line="83" column="15" lean-forward="false" selection-start-line="83" selection-start-column="15" selection-end-line="83" selection-end-column="15" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/QueryBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/RequestBuilderTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/web/Enums.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-175">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractWizardFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="47">
-          <caret line="14" column="32" lean-forward="false" selection-start-line="14" selection-start-column="32" selection-end-line="14" selection-end-column="32" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/ContextWatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/DateManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/ErrorPacket.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#2188#2196#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Pair.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Patterns.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/RequestBuilder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Requests.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/SessionWatch.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="15">
-          <caret line="1" column="20" lean-forward="false" selection-start-line="1" selection-start-column="20" selection-end-line="1" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/SharedScopeVariable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="45">
-          <caret line="3" column="27" lean-forward="false" selection-start-line="3" selection-start-column="27" selection-end-line="3" selection-end-column="27" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/UserScopeVariable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="e#933#934#0" expanded="false" />
-            <element signature="e#967#968#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/WebPaths.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/WebUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3469#3499#0" expanded="false" />
-            <element signature="e#4166#4196#0" expanded="false" />
-            <element signature="e#5885#5915#0" expanded="false" />
-            <element signature="e#6258#6288#0" expanded="false" />
-            <element signature="e#6374#6375#0" expanded="false" />
-            <element signature="e#6472#6473#0" expanded="false" />
-            <element signature="e#6479#6509#0" expanded="false" />
-            <element signature="e#6588#6589#0" expanded="false" />
-            <element signature="e#6669#6670#0" expanded="false" />
-            <element signature="e#6676#6706#0" expanded="false" />
-            <element signature="e#6788#6789#0" expanded="false" />
-            <element signature="e#6866#6867#0" expanded="false" />
-            <element signature="e#7081#7111#0" expanded="false" />
-            <element signature="e#7638#7668#0" expanded="false" />
-            <element signature="e#8141#8171#0" expanded="false" />
-            <element signature="e#8742#8772#0" expanded="false" />
-            <element signature="e#9841#9871#0" expanded="false" />
-            <element signature="e#13529#13530#0" expanded="false" />
-            <element signature="e#13588#13589#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/gradlew.bat">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="180">
-          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="24" column="1" lean-forward="false" selection-start-line="24" selection-start-column="1" selection-end-line="24" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="41" column="53" lean-forward="false" selection-start-line="41" selection-start-column="53" selection-end-line="41" selection-end-column="53" />
-          <folding>
-            <element signature="imports" expanded="false" />
-            <element signature="e#3738#3739#0" expanded="false" />
-            <element signature="e#3799#3800#0" expanded="false" />
-            <element signature="e#4235#4265#0" expanded="false" />
-            <element signature="e#4455#4473#0" expanded="false" />
-            <element signature="e#6412#6420#0" expanded="false" />
-            <element signature="e#7107#7115#0" expanded="false" />
-            <element signature="e#7503#7509#0" expanded="false" />
-            <element signature="e#8095#8103#0" expanded="false" />
-            <element signature="e#11430#11460#0" expanded="false" />
-            <element signature="e#11562#11574#0" expanded="false" />
-            <element signature="e#13188#13189#0" expanded="false" />
-            <element signature="e#13210#13211#0" expanded="false" />
-            <element signature="e#13600#13601#0" expanded="false" />
-            <element signature="e#13622#13623#0" expanded="false" />
-            <element signature="e#13873#13874#0" expanded="false" />
-            <element signature="e#13895#13896#0" expanded="false" />
-            <element signature="e#14303#14304#0" expanded="false" />
-            <element signature="e#14325#14326#0" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormBinder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="8" column="18" lean-forward="false" selection-start-line="8" selection-start-column="18" selection-end-line="8" selection-end-column="18" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/build.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/java/CreditCardForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/java/CreditCardFormValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="75">
-          <caret line="14" column="13" lean-forward="false" selection-start-line="14" selection-start-column="13" selection-end-line="14" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/java/UploadCsvForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/sample/src/java/CreditCardAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-4225">
-          <caret line="28" column="13" lean-forward="false" selection-start-line="28" selection-start-column="13" selection-end-line="28" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestFormValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/CommaDelimitedStringArrayEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/DatePropertyEditor.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="360">
-          <caret line="34" column="0" lean-forward="false" selection-start-line="34" selection-start-column="0" selection-end-line="34" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormValidator.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="6" column="4" lean-forward="false" selection-start-line="6" selection-start-column="4" selection-end-line="6" selection-end-column="4" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/FormValidatorUtil.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="7" column="33" lean-forward="false" selection-start-line="7" selection-start-column="33" selection-end-line="7" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/Form.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-30">
-          <caret line="9" column="12" lean-forward="false" selection-start-line="9" selection-start-column="12" selection-end-line="9" selection-end-column="12" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/settings.gradle">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/TestForm.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="300">
-          <caret line="24" column="27" lean-forward="false" selection-start-line="24" selection-start-column="27" selection-end-line="24" selection-end-column="27" />
-          <folding>
-            <element signature="e#479#480#0" expanded="true" />
-            <element signature="e#509#510#0" expanded="true" />
-            <element signature="e#622#623#0" expanded="true" />
-            <element signature="e#650#651#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2535">
-          <caret line="191" column="39" lean-forward="false" selection-start-line="191" selection-start-column="39" selection-end-line="191" selection-end-column="39" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/main/java/com/socotech/wf4j/AbstractAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="390">
-          <caret line="35" column="41" lean-forward="true" selection-start-line="35" selection-start-column="41" selection-end-line="35" selection-end-column="41" />
-          <folding>
-            <element signature="e#1370#1371#0" expanded="true" />
-            <element signature="e#1402#1403#0" expanded="true" />
-            <element signature="e#2921#2922#0" expanded="true" />
-            <element signature="e#2956#2957#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-  </component>
-  <component name="masterDetails">
-    <states>
-      <state key="ArtifactsStructureConfigurable.UI">
-        <settings>
-          <artifact-editor />
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="FacetStructureConfigurable.UI">
-        <settings>
-          <last-edited>No facets are configured</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="GlobalLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>groovy-2.4.7</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="JdkListConfigurable.UI">
-        <settings>
-          <last-edited>1.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ModuleStructureConfigurable.UI">
-        <settings>
-          <last-edited>sample_test|sample</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-                <option value="0.6" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectJDKs.UI">
-        <settings>
-          <last-edited>1.6</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.24428822" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-      <state key="ProjectLibrariesConfigurable.UI">
-        <settings>
-          <last-edited>Gradle: cglib:cglib-nodep:2.2.2</last-edited>
-          <splitter-proportions>
-            <option name="proportions">
-              <list>
-                <option value="0.2" />
-              </list>
-            </option>
-          </splitter-proportions>
-        </settings>
-      </state>
-    </states>
   </component>
 </project>

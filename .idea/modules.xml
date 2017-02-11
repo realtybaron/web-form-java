@@ -2,13 +2,9 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/lib.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/lib.iml" group="lib" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/lib_main.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/lib_main.iml" group="lib" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/lib/lib_test.iml" filepath="$PROJECT_DIR$/.idea/modules/lib/lib_test.iml" group="lib" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/sample.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/sample.iml" group="sample" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/sample_main.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/sample_main.iml" group="sample" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/sample/sample_test.iml" filepath="$PROJECT_DIR$/.idea/modules/sample/sample_test.iml" group="sample" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/wf4j.iml" filepath="$PROJECT_DIR$/.idea/modules/wf4j.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wf4j_main.iml" filepath="$PROJECT_DIR$/.idea/modules/wf4j_main.iml" group="wf4j" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/wf4j_test.iml" filepath="$PROJECT_DIR$/.idea/modules/wf4j_test.iml" group="wf4j" />
     </modules>
   </component>
 </project>
