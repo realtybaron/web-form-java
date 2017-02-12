@@ -4,18 +4,14 @@
 package com.socotech.wf4j;
 
 import java.text.DateFormat;
-import java.text.DateFormatSymbols;
 import java.text.ParseException;
-import java.text.ParsePosition;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.LinkedList;
 import java.util.TimeZone;
 
-import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.apache.commons.lang.time.DateUtils;
 
 /**
  * <p/> A collection of date-related utilities. </p> <p/> <p/> Clients should <i>always </i> use these routines to make sure that all the dates are internally consistent -- that
@@ -31,18 +27,7 @@ public class DateManager {
      * without an instance.) </p>
      */
     DateManager() {
-        //nop
-    }
-
-    /**
-     * Returns the earliest time relevant to the system, i.e. August 1st, 2005
-     *
-     * @return the system's earliest recorded time
-     */
-    public static Date epoch() {
-        Calendar newCal = Calendar.getInstance(tz);
-        newCal.set(2005, 7, 1, 0, 0, 0);
-        return newCal.getTime();
+        // noop
     }
 
     /**
@@ -57,49 +42,6 @@ public class DateManager {
     }
 
     /**
-     * Get a date +/- days from now
-     *
-     * @param offset +/- days
-     * @return offset date
-     */
-    public static Date days(int offset) {
-        return addTime(Calendar.DATE, offset);
-    }
-
-    /**
-     * Return the current time minus one day in the time zone specified in the configuration file.
-     *
-     * @return yesterday at this time
-     */
-    public static Date yesterday() {
-        Calendar cal = Calendar.getInstance(tz);
-        cal.add(Calendar.DAY_OF_YEAR, -1);
-        return cal.getTime();
-    }
-
-    /**
-     * Return the current time minus one week in the time zone specified in the configuration file.
-     *
-     * @return last week at this time
-     */
-    public static Date yesterweek() {
-        return yesterweek(now());
-    }
-
-    /**
-     * Return the current time minus one week in the time zone specified in the configuration file.
-     *
-     * @param d reference date
-     * @return last week at this time
-     */
-    public static Date yesterweek(Date d) {
-        Calendar cal = Calendar.getInstance(tz);
-        cal.setTime(d);
-        cal.add(Calendar.WEEK_OF_YEAR, -1);
-        return cal.getTime();
-    }
-
-    /**
      * Return the current time minus one month in the time zone specified in the configuration file.
      *
      * @return last week at this time
@@ -107,18 +49,6 @@ public class DateManager {
     public static Date yestermonth() {
         Calendar cal = Calendar.getInstance(tz);
         cal.add(Calendar.MONTH, -1);
-        return cal.getTime();
-    }
-
-    /**
-     * Return the current time minus plus months months in the time zone specified in the configuration file.
-     *
-     * @param months offset in months
-     * @return months months from now, at this time.
-     */
-    public static Date monthsFromNow(int months) {
-        Calendar cal = Calendar.getInstance(tz);
-        cal.add(Calendar.MONTH, months);
         return cal.getTime();
     }
 
@@ -142,15 +72,6 @@ public class DateManager {
     public static Date setToEndOfDay(Date d) {
         Validate.notNull(d);
         return DateManager.makeDate(DateManager.getField(d, Calendar.YEAR), DateManager.getField(d, Calendar.MONTH), DateManager.getField(d, Calendar.DAY_OF_MONTH), 23, 59, 59);
-    }
-
-    /**
-     * <p/> Returns the calendar used in all of the date manager routines. </p>
-     *
-     * @return The calendar used in all of the routines
-     */
-    public static Calendar getCalendar() {
-        return cal;
     }
 
     /**
@@ -204,26 +125,6 @@ public class DateManager {
     }
 
     /**
-     * <p/> Given a date and a number of hours to roll it, this method adds that many hours. Pass in a positive number and it moves forward that many hours; negative and it moves
-     * back that many hours. If you pass in zero, you get the same date object back. </p>
-     *
-     * @param startingDate The starting date
-     * @param hours        The number of hours to roll, can be negative
-     * @return A new date object
-     */
-    public static Date rollDateHours(Date startingDate, int hours) {
-        Date rv = startingDate;
-        if (hours != 0) {
-            synchronized (cal) {
-                cal.setTime(startingDate);
-                cal.add(Calendar.HOUR, hours);
-                rv = cal.getTime();
-            }
-        }
-        return rv;
-    }
-
-    /**
      * Given a date and a number of minutes to alter it, this method will add the minutes to the original date and return an adjusted date. If you pass in negative minutes, they
      * will be subtracted from the original. <p/> Because of the way the calendar works, it will do the intelligent thing if you specify an overly large number of minutes. e.g.
      * addTime(original, 1440) will add a full day to the original date.
@@ -236,20 +137,6 @@ public class DateManager {
     @Deprecated
     public static Date addTime(Date original, int minutes) {
         return addTime(original, Calendar.MINUTE, minutes);
-    }
-
-    /**
-     * Using the current time and a number of minutes to alter it, this method will add the minutes to the original date and return an adjusted date. If you pass in negative
-     * minutes, they will be subtracted from the original. <p/> Because of the way the calendar works, it will do the intelligent thing if you specify an overly large number of
-     * minutes. e.g. addTime(original, 1440) will add a full day to the original date.
-     *
-     * @param field  the field to modify, e.g. Calendar.MINUTE. See the Calendar javadoc "Field Summary" for choices.
-     * @param amount the number of minutes to alter the original by
-     * @return the modified Date
-     * @throws IllegalArgumentException if the original date is null
-     */
-    public static Date addTime(int field, int amount) {
-        return addTime(DateManager.now(), field, amount);
     }
 
     /**
@@ -271,45 +158,6 @@ public class DateManager {
         newCal.setTime(original);
         newCal.add(field, amount);
         return newCal.getTime();
-    }
-
-    /**
-     * Given a date, calculate the difference between a the current time and the specific field on the date.
-     *
-     * @param d     date
-     * @param field calendar field
-     * @return difference
-     */
-    public static int diffTime(Date d, int field) {
-        return diffTime(DateManager.now(), d, field);
-    }
-
-    /**
-     * Given two dates, calculate the difference between a specific field on each date.
-     *
-     * @param d1    date one
-     * @param d2    date two
-     * @param field calendar field
-     * @return difference
-     */
-    public static int diffTime(Date d1, Date d2, int field) {
-        Validate.notNull(d1);
-        Validate.notNull(d2);
-        // calc the absolute difference
-        long diff = Math.abs(d2.getTime() - d1.getTime());
-        // switch on the calendar field
-        switch (field) {
-            case Calendar.DATE:
-                return Math.round((float) diff / DateUtils.MILLIS_PER_DAY);
-            case Calendar.HOUR:
-                return Math.round((float) diff / DateUtils.MILLIS_PER_HOUR);
-            case Calendar.MINUTE:
-                return Math.round((float) diff / DateUtils.MILLIS_PER_MINUTE);
-            case Calendar.SECOND:
-                return Math.round((float) diff / DateUtils.MILLIS_PER_SECOND);
-            default:
-                throw new IllegalArgumentException("Unsupported calendar field: " + field);
-        }
     }
 
     /**
@@ -346,85 +194,6 @@ public class DateManager {
     }
 
     /**
-     * A straightfoward routine that tells you if "former" is strictly prior to "latter".
-     *
-     * @param former the date that supposedly comes first
-     * @param latter the date that supposedly comes second
-     * @return true if former does, in fact, precede latter; false otherwise
-     * @throws IllegalArgumentException if either arg is null
-     */
-    public static boolean isBefore(Date former, Date latter) {
-        Validate.notNull(former);
-        Validate.notNull(latter);
-
-        Date f = new Date(former.getTime());
-        Date l = new Date(latter.getTime());
-
-        if (f.compareTo(l) < 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * A straightfoward routine that tells you if "latter" is strictly after "former".
-     *
-     * @param latter the date that supposedly comes second
-     * @param former the date that supposedly comes first
-     * @return true if former does, in fact, precede latter; false otherwise
-     * @throws IllegalArgumentException if either arg is null
-     */
-    public static boolean isAfter(Date latter, Date former) {
-        Validate.notNull(former);
-        Validate.notNull(latter);
-
-        if (latter.compareTo(former) > 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * A straightfoward routine that tells you if "former" is prior to (or equal to) "latter".
-     *
-     * @param former the date that supposedly comes first
-     * @param latter the date that supposedly comes second
-     * @return true if former does, in fact, precede latter; false otherwise
-     * @throws IllegalArgumentException if either arg is null
-     */
-    public static boolean isBeforeOrEqualTo(Date former, Date latter) {
-        Validate.notNull(former);
-        Validate.notNull(latter);
-
-        if (former.compareTo(latter) <= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
-     * A straightfoward routine that tells you if "latter" is after (or equal to) "former".
-     *
-     * @param latter the date that supposedly comes second
-     * @param former the date that supposedly comes first
-     * @return true if former does, in fact, precede latter; false otherwise
-     * @throws IllegalArgumentException if either arg is null
-     */
-    public static boolean isAfterOrEqualTo(Date latter, Date former) {
-        Validate.notNull(former);
-        Validate.notNull(latter);
-
-        if (latter.compareTo(former) >= 0) {
-            return true;
-        } else {
-            return false;
-        }
-    }
-
-    /**
      * <p/> Given a Date object, returns a string in the canonical format. The format is yyyy-MM-dd kk:mm:ss. The time zone is the time zone specified in the configuration object.
      * </p>
      *
@@ -438,64 +207,6 @@ public class DateManager {
     }
 
     /**
-     * <p/> Given a Date object, returns a string in the canonical format. The format is yyyy-MM-dd kk:mm:ss. The time zone is the time zone specified in the configuration object.
-     * </p>
-     *
-     * @param date       The date to format
-     * @param defaultVal If date is null or cannot be parsed, return this value
-     * @return The string form of the date
-     */
-    public static String dateToString(Date date, String defaultVal) {
-        if (date == null) {
-            return defaultVal;
-        }
-        synchronized (stdDateFormat) {
-            try {
-                return stdDateFormat.format(date);
-            } catch (Exception e) {
-                return defaultVal;
-            }
-        }
-    }
-
-    /**
-     * Given a date object, return a string in the form that RSS 2.0 undertands, e.g. Sun, 19 May 2002 15:21:36 GMT
-     *
-     * @param date the date to format
-     * @return the string form of the date
-     */
-    public static String dateToRfc822String(Date date) {
-        synchronized (stdDateFormat) {
-            return rfc822DateFormat.format(date);
-        }
-    }
-
-    /**
-     * <p/> Given a Date object, returns a string in the short canonical format. The format is yyyy-MM-dd. The time zone is the time zone specified in the configuration object.
-     * </p>
-     *
-     * @param date The date to format
-     * @return The string form of the date
-     */
-    public static String dateToShortString(Date date) {
-        synchronized (shortDateFormat) {
-            return shortDateFormat.format(date);
-        }
-    }
-
-    /**
-     * Given a date object, returns it in the medium canonical format, MM/dd/yyyy HH:mm.
-     *
-     * @param date da date
-     * @return the medium string form of the date
-     */
-    public static String dateToMediumString(Date date) {
-        synchronized (mediumDateFormat) {
-            return mediumDateFormat.format(date);
-        }
-    }
-
-    /**
      * <p/> Given a Date object, returns a string in the short human-friendly format. The format is MM/dd/yyyy. The time zone is the time zone specified in the configuration
      * object. </p>
      *
@@ -505,113 +216,6 @@ public class DateManager {
     public static String dateToHumanString(Date date) {
         synchronized (humanDateFormat) {
             return humanDateFormat.format(date);
-        }
-    }
-
-    /**
-     * <p/> Given a Date object, returns a string in the long friendly format, which non-techies will like because it is needlessly long. The format is like "Sunday, May 3, 2005
-     * 04:32:22pm PST". The time zone is the time zone specified in the configuration object. </p>
-     *
-     * @param date The date to format
-     * @return The human-friendly long form of the date
-     */
-    public static String dateToFriendlyString(Date date) {
-        synchronized (friendlyDateFormat) {
-            return friendlyDateFormat.format(date);
-        }
-    }
-
-    /**
-     * <p/> Given a Date object, returns a string in the short friendly format, which non-techies will like because it does not frighten them with such things as "time zone" or
-     * "minutes". The format is like "May 3, 2005". The time zone is the time zone specified in the configuration object. </p>
-     *
-     * @param date The date to format
-     * @return The human-friendly short form of the date
-     */
-    public static String dateToShortFriendlyString(Date date) {
-        synchronized (shortFriendlyDateFormat) {
-            return shortFriendlyDateFormat.format(date);
-        }
-    }
-
-    /**
-     * Returns a date in short discovery string format
-     *
-     * @param date the date to format
-     * @return the discovery short form
-     */
-    public static String dateToShortDiscoveryString(Date date) {
-        synchronized (shortDiscoveryFormat) {
-            return shortDiscoveryFormat.format(date);
-        }
-    }
-
-    /**
-     * <p/> Given a Date object and a time zone, returns a string in the the full format (useful for official but human-readable formats). The format is like "Wed 2004-01-05 22:34
-     * EST". </p>
-     *
-     * @param date The date to format
-     * @param zone The time zone to convert it to
-     * @return The string form of the date
-     */
-    public static String dateToFullString(Date date, String zone) {
-        synchronized (fullDateFormat) {
-            TimeZone oldTz = fullDateFormat.getTimeZone();
-            TimeZone newTz = TimeZone.getTimeZone(zone);
-            fullDateFormat.setTimeZone(newTz);
-            String val = fullDateFormat.format(date);
-            fullDateFormat.setTimeZone(oldTz);
-            return val;
-        }
-    }
-
-    /**
-     * <p/> Given a Date object, returns the month in the the full format (useful for official but human-readable formats). The format is like "August" or "November". </p>
-     *
-     * @param date The date to format
-     * @return The string form of the date
-     */
-    public static String dateToFullMonth(Date date) {
-        synchronized (fullMonthFormat) {
-            return fullMonthFormat.format(date);
-        }
-    }
-
-    /**
-     * Given a date object, returns the date in the form like "August 2009"
-     *
-     * @param date the date
-     * @return string form of the date
-     */
-    public static String dateToFullMonthYear(Date date) {
-        synchronized (fullMonthYearFormat) {
-            return fullMonthYearFormat.format(date);
-        }
-    }
-
-    /**
-     * <p/> Given a string of the standard format, returns a date object in the standard time zone parsed from that string. </p>
-     *
-     * @param date The string form of a date
-     * @return A date object from that string
-     * @throws ParseException if it can't be parsed
-     */
-    public static Date stringToDate(String date) throws ParseException {
-        synchronized (stdDateFormat) {
-            return stdDateFormat.parse(date);
-        }
-    }
-
-    /**
-     * <p/> Given a string of the short format, returns a date object in the standard time zone parsed from that string. </p>
-     *
-     * @param date The short string form of a date
-     * @return A date object from that string
-     * @throws ParseException if it can't be parsed
-     */
-    public static Date shortStringToDate(String date) throws ParseException {
-        synchronized (shortDateFormat) {
-            return shortDateFormat.parse(date);
         }
     }
 
@@ -645,121 +249,6 @@ public class DateManager {
     }
 
     /**
-     * <p/> Given a string of the full format, returns a date object in the standard time zone parsed from that string. </p>
-     *
-     * @param date The full string form of a date
-     * @return A date object from that string
-     * @throws ParseException if it can't be parsed
-     */
-    public static Date fullStringToDate(String date) throws ParseException {
-        synchronized (fullDateFormat) {
-            return fullDateFormat.parse(date);
-        }
-    }
-
-    /**
-     * <p/> Given a date string of an unknown format, tries to parse it into a Date object. Obviously the success or failure of this method depends on what format of string we
-     * get.
-     * <p/>
-     *
-     * @param date A string form of a date of an unknown format
-     * @return A date object from that string
-     * @throws ParseException if the string can't be parsed
-     */
-    public static Date unknownStringToDate(String date) throws ParseException {
-        // We may get dates of the form ##/##/#### or similar, with no way to know if the
-        // month is first or if the day is first. Most of the time this function is called
-        // on content publication dates, so hint to the function that the most likely
-        // dates are those that are sooner rather than later.
-        int[] days = new int[]{1, 30, 365, 3650};
-        for (int d : days) {
-            Date inFuture;
-            synchronized (cal) {
-                cal.setTime(now());
-                cal.add(Calendar.DATE, d);
-                inFuture = cal.getTime();
-            }
-            Date guess = unknownStringToDate(date, inFuture);
-            if (guess != null) {
-                return guess;
-            }
-        }
-
-        // Got this far? I guess we got nothin'.
-        throw new ParseException("Couldn't parse " + date + " into any known date format", 0);
-    }
-
-    /**
-     * <p/> Given a date string of an unknown format, tries to parse it into a Date object. Obviously the success or failure of this method depends on what format of string we get.
-     * </p> <p/> Right now the following formats are supported: </p> <ul> <li>January 5, 2003</li> <li>Jan 5, 2003</li> <li>01-05-2003</li> <li>01-05-03</li> <li>01/05/2003</li>
-     * <li>01/05/03</li> <li>Wednesday, January 5, 2003</li> <li>The other date formats otherwise accepted by this <code>DateManager</code>.</li> <ul> <p/> Because of the wide
-     * variety of possible date formats, we only return dates between ten years ago and a future date (from the time this method is run). That's a fairly arbitrary choice, but as
-     * this method is used for publication dates of content, it seems a reasonable choice. </p>
-     *
-     * @param date    A string form of a date of an unknown format
-     * @param ceiling A date which is considered obsurdly futuristic
-     * @return A date object from that string
-     * @throws ParseException if the string can't be parsed
-     */
-    public static Date unknownStringToDate(String date, Date ceiling) {
-        // September is the only month likely to be abbreviated with four
-        // letters ("Sept.") so fix that...
-        date = date.replaceFirst("Sept\\.", "Sep\\.");
-        date = date.replaceFirst("Sept ", "Sep ");
-        date = StringUtils.strip(date);
-
-        // First try the leading-number formatters, limiting the earliest
-        // parseable date to earlyDate.
-        for (DateFormat df : commonNumberDateFormatters) {
-            try {
-                Date rv = null;
-
-                synchronized (df) {
-                    rv = df.parse(date);
-                }
-
-                if (rv.before(earlyDate)) {
-                    continue;
-                }
-                if (rv.after(ceiling)) {
-                    continue;
-                }
-
-                // Got this far? Then we parsed OK; return that date
-                return rv;
-
-            } catch (ParseException pe) {
-                // It's OK that this didn't parse -- just skip onto the next one
-            }
-        }
-
-        // Now try the leading-string formatters, with no earlyDate
-        // restriction.
-        for (DateFormat df : commonStringDateFormatters) {
-            try {
-                Date rv = null;
-
-                synchronized (df) {
-                    rv = df.parse(date);
-                }
-
-                if (rv.after(ceiling)) {
-                    continue;
-                }
-
-                // Got this far? Then we parsed OK; return that date
-                return rv;
-
-            } catch (ParseException pe) {
-                // It's OK that this didn't parse -- just skip onto the next one
-            }
-        }
-
-        // Got this far? We failed to parse.
-        return null;
-    }
-
-    /**
      * <p/> Given a date and a field, fetches the value of that field given the standard time zone. Any of the legal date fields, like <code>Calendar.DAY_OF_MONTH</code>, are legal
      * in this function. </p>
      *
@@ -773,39 +262,6 @@ public class DateManager {
             cal.setTime(date);
             return cal.get(field);
         }
-    }
-
-    /**
-     * <p/> Given a date, returns a new date object that is the first of that month at 0:00:00. For example, if you pass in the date for February 3, 2006, 3:33PM, you'll get back a
-     * date February 1, 2006, 0:00:00. </p>
-     *
-     * @param d the date you're interested in
-     * @return A new date that's on the first of that month
-     */
-    public static Date getFirstOfMonth(Date d) {
-        Date rv = null;
-        synchronized (cal) {
-            cal.setTime(d);
-            rv = DateManager.makeDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), 1, 0, 0, 0);
-        }
-        return rv;
-    }
-
-    /**
-     * <p/> Given a date, returns a new date object that is the end of that month at 23:59:59. For example, if you pass in the date for February 3, 2006, 3:33PM, you'll get back a
-     * date February 28, 2006, 23:59:59. </p>
-     *
-     * @param d the date you're interested in
-     * @return A new date that's on the last of that month
-     */
-    public static Date getLastOfMonth(Date d) {
-        Date rv = null;
-        synchronized (cal) {
-            cal.setTime(d);
-            int lastDay = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
-            rv = DateManager.makeDate(cal.get(Calendar.YEAR), cal.get(Calendar.MONTH), lastDay, 23, 59, 59);
-        }
-        return rv;
     }
 
     /**
@@ -825,137 +281,6 @@ public class DateManager {
             cal.set(Calendar.MILLISECOND, 0);
             date.setTime(cal.getTimeInMillis());
         }
-    }
-
-    /**
-     * Decodes a time value in "hh:mm:ss" format and returns it as milliseconds since midnight.  Useful for treating as a duration to add to another known date, as
-     * "otherDate.getTime() + decodeTime(duration)".
-     *
-     * @param timeExpr a time expressed in hh:mm:ss form
-     * @return the equivalent number of milliseconds, suitable for adding
-     * @throws IllegalArgumentException if the arg is null or not paresable
-     */
-    public static synchronized int decodeTime(String timeExpr) throws IllegalArgumentException {
-        Validate.notEmpty(timeExpr);
-
-        SimpleDateFormat f = new SimpleDateFormat("HH:mm:ss");
-        TimeZone utcTimeZone = TimeZone.getTimeZone("UTC");
-        f.setTimeZone(utcTimeZone);
-        f.setLenient(false);
-        ParsePosition p = new ParsePosition(0);
-        Date d = f.parse(timeExpr, p);
-        if (d == null || !isRestOfStringBlank(timeExpr, p.getIndex())) {
-            throw new IllegalArgumentException("Invalid time value (hh:mm:ss): \"" + timeExpr + "\".");
-        }
-        return (int) d.getTime();
-    }
-
-    /**
-     * A small utility method used by the decodeTime() method, above.
-     *
-     * @param s string to test
-     * @param p position within the string
-     * @return true if the rest of the string is blank
-     */
-    private static boolean isRestOfStringBlank(String s, int p) {
-        while (p < s.length() && Character.isWhitespace(s.charAt(p))) {
-            p++;
-        }
-        return p >= s.length();
-    }
-
-    /**
-     * <p/> A very simple helper function to return the current year, helpful in things like copyright notices and the like. </p>
-     *
-     * @return the current four-digit year.
-     */
-    public static int getCurrentYear() {
-        return getField(now(), Calendar.YEAR);
-    }
-
-    /**
-     * A very simple helper function to return the current day-of-month, e.g. 25.
-     *
-     * @return the current day-of-month
-     */
-    public static int getCurrentDayOfMonth() {
-        return getField(now(), Calendar.DATE);
-    }
-
-    /**
-     * Get the number of days in the current month
-     *
-     * @return number of days
-     */
-    public static int getDaysInCurrentMonth() {
-        return cal.getMaximum(Calendar.DAY_OF_MONTH);
-    }
-
-    /**
-     * A helper function to compute whether two dates occurred within the same month and year.  So, Jan/5/06 == Jan/15/06, but Jan/1/06 != Jan/1/07.
-     *
-     * @param first  the first date to compare
-     * @param second the second date to compare
-     * @return true if they share the same month and year, false otherwise
-     * @throws IllegalArgumentException if either date is null
-     */
-    public static boolean isShareSameMonth(Date first, Date second) {
-        Validate.notNull(first);
-        Validate.notNull(second);
-
-        Calendar calFirst = Calendar.getInstance();
-        Calendar calSecond = Calendar.getInstance();
-        calFirst.setTime(first);
-        calSecond.setTime(second);
-
-        return (calFirst.get(Calendar.MONTH) == calSecond.get(Calendar.MONTH)) && (calFirst.get(Calendar.YEAR) == calSecond.get(Calendar.YEAR));
-    }
-
-    /**
-     * A helper function to compute whether two dates occurred within the same year.  So, Jan/5/06 == Oct/15/06.
-     *
-     * @param first  the first date to compare
-     * @param second the second date to compare
-     * @return true if they share the same month and year, false otherwise
-     * @throws IllegalArgumentException if either date is null
-     */
-    public static boolean isShareSameYear(Date first, Date second) {
-        Validate.notNull(first);
-        Validate.notNull(second);
-
-        Calendar calFirst = Calendar.getInstance();
-        Calendar calSecond = Calendar.getInstance();
-        calFirst.setTime(first);
-        calSecond.setTime(second);
-
-        return calFirst.get(Calendar.YEAR) == calSecond.get(Calendar.YEAR);
-    }
-
-    /**
-     * Simple helper to return the month and year in a
-     *
-     * @param month
-     * @param year
-     * @return
-     */
-    public String monthAndYearString(int month, int year) {
-        DateFormatSymbols dfs = new DateFormatSymbols();
-        String[] monthNames = dfs.getMonths();
-        return monthNames[month] + " " + year;
-    }
-
-
-    /**
-     * <p/> Helper function to validate a start and end date. Throws an invalid argument exception if either start or end date is null, or if the end date isn't strictly after the
-     * start date. </p>
-     *
-     * @param start the start date
-     * @param end   the end date
-     */
-    public static void validateDateRange(Date start, Date end) {
-        Validate.notNull(start);
-        Validate.notNull(end);
-        Validate.isTrue(end.after(start));
     }
 
     /**
