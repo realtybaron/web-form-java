@@ -12,7 +12,7 @@ import org.apache.commons.lang.Validate;
 /**
  * <p/> A simple class that assists in creating URLs with query strings. This can be created from scratch, or from an existing request. Clients set (or add) parameter values and
  * can afterward generate an URI to be used in Web applications. There are three main ways to view this URL: </p> <ul> <li><code>toString</code> which is human-readable</li>
- * <li><code>toHref</code> which is URL-encoded for wf4j pages</li> <li><code>toAnchorLink</code> for building up an anchor tag</li> </ul> <p/> The map is sorted, so the attributes
+ * <li><code>toHref</code> which is URL-encoded for form pages</li> <li><code>toAnchorLink</code> for building up an anchor tag</li> </ul> <p/> The map is sorted, so the attributes
  * in the query string come out in alphabetical order. </p>
  */
 public class RequestBuilder extends QueryBuilder {

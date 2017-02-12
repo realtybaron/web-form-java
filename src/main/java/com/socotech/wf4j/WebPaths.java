@@ -1,7 +1,7 @@
 package com.socotech.wf4j;
 
 /**
- * Class for some basic domains and the like. These don't have any wf4j-based dependencies, unlike the methods in WebUtil.
+ * Class for some basic domains and the like. These don't have any form-based dependencies, unlike the methods in WebUtil.
  */
 public class WebPaths {
     public static final String INCLUDE_REQUEST_URI_ATTRIBUTE = "javax.servlet.include.request_uri";

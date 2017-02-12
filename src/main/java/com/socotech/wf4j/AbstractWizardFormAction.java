@@ -43,7 +43,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
                 // force creation of a new session form object to avoid infinite redirects
                 this.getFormObject(request);
                 // redirect to first page of wizard
-                super.redirectTo(request, response, this.getName() + ".act");
+                super.redirectTo(request, response, new RequestBuilder(request).toString());
                 // indicate redirect in progress
                 return true;
             }
@@ -65,7 +65,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @throws ServletException servlet problems?
      */
     @Override
-    protected final void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, ErrorPacket errors) throws IOException, ServletException {
+    protected final void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
         try {
             // find current page
             int page = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
@@ -121,25 +121,6 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     }
 
     /**
-     * <p/> Returns true if this action shouldn't be performed unless there is a signed-in user. The default for actions derived from this class is false -- no one needs to be
-     * signed in. </p>
-     *
-     * @param request HTTP request
-     * @return false
-     */
-    @Override
-    public boolean mustBeSignedIn(HttpServletRequest request) {
-        int pageNumber = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
-        if (this.isBackSubmission(request)) {
-            return this.mustBeSignedIn(request, --pageNumber);
-        } else if (this.isNextSubmission(request)) {
-            return this.mustBeSignedIn(request, ++pageNumber);
-        } else {
-            return this.mustBeSignedIn(request, pageNumber);
-        }
-    }
-
-    /**
      * Skip binding if moving backwards in the page flow
      *
      * @param request HTTP request
@@ -148,7 +129,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @return true, if moving backwards
      */
     @Override
-    protected boolean suppressBinding(HttpServletRequest request, Object o, ErrorPacket errors) {
+    protected boolean suppressBinding(HttpServletRequest request, Object o, FormErrors errors) {
         Form form = this.getClass().getAnnotation(Form.class);
         return form.sessionForm() && this.isBackSubmission(request);
     }
@@ -162,7 +143,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @return true, if moving backwards
      */
     @Override
-    protected boolean suppressValidation(HttpServletRequest request, Object o, ErrorPacket errors) {
+    protected boolean suppressValidation(HttpServletRequest request, Object o, FormErrors errors) {
         return this.isBackSubmission(request);
     }
 
@@ -176,7 +157,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @throws Exception bad things
      */
     @Override
-    protected final boolean onBind(HttpServletRequest req, HttpServletResponse response, Object o, ErrorPacket errors) throws Exception {
+    protected final boolean onBind(HttpServletRequest req, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
         int pageNumber = Requests.getIntParameter(req, SharedScopeVariable.page.name(), -1);
         this.onBind(req, o, errors, pageNumber);
         return false;
@@ -192,7 +173,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @throws IllegalAccessException if something else bad happens
      */
     @Override
-    protected final void validateFormObject(HttpServletRequest request, Object command, ErrorPacket o) throws Exception {
+    protected final void validateFormObject(HttpServletRequest request, Object command, FormErrors o) throws Exception {
         int pageNumber = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
         this.validatePage(request, command, o, pageNumber);
     }
@@ -207,7 +188,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @throws Exception bad stuff
      */
     @Override
-    protected final void showForm(HttpServletRequest request, HttpServletResponse response, Object o, ErrorPacket errors) throws Exception {
+    protected final void showForm(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
         int page = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
         this.showPage(request, response, o, errors, page);
     }
@@ -223,7 +204,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @param page     target page
      * @throws Exception bad things, man....bad things
      */
-    protected void showPage(HttpServletRequest request, HttpServletResponse response, Object o, ErrorPacket errors, int page) throws Exception {
+    protected void showPage(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors, int page) throws Exception {
         if (!response.isCommitted()) {
             Form form = this.getClass().getAnnotation(Form.class);
             // add form object to request scope
@@ -306,7 +287,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @param page    the current page
      * @throws Exception bad things
      */
-    protected void onBind(HttpServletRequest request, Object o, ErrorPacket errors, int page) throws Exception {
+    protected void onBind(HttpServletRequest request, Object o, FormErrors errors, int page) throws Exception {
         // noop
     }
 
@@ -319,7 +300,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @param page    the current page
      * @throws Exception bad things
      */
-    protected abstract void validatePage(HttpServletRequest request, Object command, ErrorPacket errors, int page) throws Exception;
+    protected abstract void validatePage(HttpServletRequest request, Object command, FormErrors errors, int page) throws Exception;
 
     /**
      * Handle a form submission from a specific page within the wizard.

@@ -17,8 +17,7 @@ import org.apache.log4j.Logger;
  * category for all action objects. Actions derived from this object do not require authorization by default; if your derived action needs a member to be signed in in order to run
  * it, override <code>mustBeSignedIn</code>. </p>
  */
-public abstract class AbstractAction {
-
+public abstract class AbstractAction implements FormAction {
     /**
      * <p/> Constructs a new un-named action. Sets as its name the simple name of the class without the word "action" -- for example, if the class is <code>FooBarAction</code>,
      * then the name of this action is "fooBar". </p>
@@ -58,39 +57,6 @@ public abstract class AbstractAction {
     }
 
     /**
-     * <p/> Returns true if this action shouldn't be performed unless there is a signed-in user. The default for actions derived from this class is false -- no one needs to be
-     * signed in. </p>
-     *
-     * @param request HTTP request
-     * @return false
-     */
-    public boolean mustBeSignedIn(HttpServletRequest request) {
-        return false;
-    }
-
-
-    /**
-     * Should user be redirected to sign in page?
-     *
-     * @param request wf4j request
-     * @return true, if user should provide credentials on a sign in page
-     */
-    public boolean isSignInPrompt(HttpServletRequest request) {
-        return true;
-    }
-
-    /**
-     * Returns the name of the view to which user is forwarded in order to ca
-     *
-     * @param request HTTP request
-     * @return name of view which prompts user for login/password or account signup (i.e. signin.jsp)
-     */
-    public String getSignInView(HttpServletRequest request) {
-        return "signin.jsp";
-    }
-
-
-    /**
      * Invoked as alternative to redirecting user to a sign in page
      *
      * @param request  wf4j request
@@ -98,18 +64,6 @@ public abstract class AbstractAction {
      */
     public void handleUnauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("access-denied.jsp").forward(request, response);
-    }
-
-    /**
-     * <p/> Returns true if the logged-in member of the current request meets all of the privilege requirements for this particular page. Should return false for any other reason.
-     * By default, we assume that the logged-in user meets all requirements. </p> <p/> This method is called by the Controller, and derived objects which implement it can assume
-     * that the member has logged in by the time it's called (in other words, they can safely call <code>getMember()</code> to return the currently logged-in user). </p>
-     *
-     * @param request The HTTP request to service from the client
-     * @return true if the user meets all the privilege requirements
-     */
-    public boolean meetsPrivilegeRequirements(HttpServletRequest request, HttpServletResponse response) {
-        return true;
     }
 
     /**
@@ -122,12 +76,6 @@ public abstract class AbstractAction {
      * @throws ServletException
      */
     protected void render(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
-
-        // Make sure we're not forwarding to an ACT page
-        if (StringUtils.substringBefore(page, "?").endsWith(".act")) {
-            throw new ServletException("Attempt to include or forward to " + page + " is illegal because it is an action. Use redirect instead.");
-        }
-
         RequestDispatcher rd = request.getRequestDispatcher(page);
         if (Requests.isIncludeRequest(request) || response.isCommitted()) {
             log.debug(this + " including " + page);
@@ -148,10 +96,6 @@ public abstract class AbstractAction {
      * @throws ServletException
      */
     protected void includeIn(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
-        // Make sure we're not forwarding to an ACT page
-        if (StringUtils.substringBefore(page, "?").endsWith(".act")) {
-            throw new ServletException("Attempt to include " + page + " is illegal because it is an action. Use redirect instead.");
-        }
         request.getRequestDispatcher(page).include(request, response);
     }
 
@@ -211,7 +155,7 @@ public abstract class AbstractAction {
     }
 
     /**
-     * <p/> Utility method to send the user back to a specific page because validation failed. </p> <p/> <p/> Given an ErrorPacket that's been filled in already, places it in the
+     * <p/> Utility method to send the user back to a specific page because validation failed. </p> <p/> <p/> Given an FormErrors that's been filled in already, places it in the
      * "error" attribute of the request and redirects the user to the specified page with the same querystring (in other words, it leaves the arguments in the URL the same). </p>
      *
      * @param request  The HTTP request to service from the client
@@ -221,11 +165,11 @@ public abstract class AbstractAction {
      * @throws IOException
      * @throws ServletException
      */
-    protected void renderWithErrors(HttpServletRequest request, HttpServletResponse response, String page, ErrorPacket errors) throws IOException, ServletException {
+    protected void renderWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
 
         // If there's no error packet, create a new one
         if (errors == null) {
-            errors = new ErrorPacket();
+            errors = new FormErrors();
         }
 
         // Add the error packet to the request for the signin page to pick up
@@ -241,7 +185,7 @@ public abstract class AbstractAction {
     }
 
     /**
-     * <p/> Utility method to send the user back to a specific page because validation failed. </p> <p/> <p/> Given an ErrorPacket that's been filled in already, places it in the
+     * <p/> Utility method to send the user back to a specific page because validation failed. </p> <p/> <p/> Given an FormErrors that's been filled in already, places it in the
      * "error" attribute of the request and redirects the user to the specified page with the same querystring (in other words, it leaves the arguments in the URL the same). </p>
      *
      * @param request  The HTTP request to service from the client
@@ -251,11 +195,11 @@ public abstract class AbstractAction {
      * @throws IOException
      * @throws ServletException
      */
-    protected void forwardToWithErrors(HttpServletRequest request, HttpServletResponse response, String page, ErrorPacket errors) throws IOException, ServletException {
+    protected void forwardToWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
 
         // If there's no error packet, create a new one
         if (errors == null) {
-            errors = new ErrorPacket();
+            errors = new FormErrors();
         }
 
         // Add the error packet to the request for the signin page to pick up

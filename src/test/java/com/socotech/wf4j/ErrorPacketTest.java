@@ -27,7 +27,7 @@ public class ErrorPacketTest extends TestCase {
 	 * Can we add items to the error packet?
 	 */
 	public void testPut() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		p.put("object", "value");
 		Assert.assertEquals(p.get("object"), "value");
 		p.put("object", "new_value");
@@ -50,7 +50,7 @@ public class ErrorPacketTest extends TestCase {
 	 * Can we get the data out?
 	 */
 	public void testGet() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		assertNull(p.get("code"));
 		p.put("code", "value");
 		Assert.assertEquals(p.get("code"), "value");
@@ -60,7 +60,7 @@ public class ErrorPacketTest extends TestCase {
 	 * Test the "isSet" method
 	 */
 	public void testIsSet() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		assertFalse(p.isSet("code"));
 		p.put("code", "value");
 		assertTrue(p.isSet("code"));
@@ -70,7 +70,7 @@ public class ErrorPacketTest extends TestCase {
 	 * Test count
 	 */
 	public void testSize() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		assertTrue(p.size() == 0);
 		p.put("code", "value");
 		assertTrue(p.size() == 1);
@@ -81,7 +81,7 @@ public class ErrorPacketTest extends TestCase {
 	 */
 	@SuppressWarnings("unchecked")
 	public void testGetCodes() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		p.put("one", "one");
 		p.put("two", "two");
 		p.put("three", "three");
@@ -93,7 +93,7 @@ public class ErrorPacketTest extends TestCase {
 	}
 
 	public void testNestedPath() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		p.push("1");
 		p.push("2");
 		p.push("3");
@@ -110,7 +110,7 @@ public class ErrorPacketTest extends TestCase {
 	 * Test string method
 	 */
 	public void testToString() {
-		ErrorPacket p = new ErrorPacket();
+		FormErrors p = new FormErrors();
 		Assert.assertEquals(p.toString(), "0 errors");
 		p.put("one", "thing");
 		Assert.assertEquals(p.toString(), "1 error {one=thing}");

@@ -12,7 +12,7 @@ public class FormValidatorUtil {
      * @param errors validation errors
      * @param field a simple or nested property
      */
-    public static void invokeValidator(FormValidator validator, Object o, ErrorPacket errors, String field) {
+    public static void invokeValidator(FormValidator validator, Object o, FormErrors errors, String field) {
         String[] nested = field.split("\\.");
         try {
             for (String nest : nested) {

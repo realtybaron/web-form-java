@@ -372,7 +372,7 @@ public class Requests {
      * @param dateEnd   The end date, cannot be null
      * @param errors    The error packet to update, cannot be null
      */
-    public static void validateDates(HttpServletRequest request, Date dateStart, Date dateEnd, ErrorPacket errors) {
+    public static void validateDates(HttpServletRequest request, Date dateStart, Date dateEnd, FormErrors errors) {
 
         Validate.notNull(dateStart);
         Validate.notNull(dateEnd);

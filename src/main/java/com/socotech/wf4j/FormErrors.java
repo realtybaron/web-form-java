@@ -1,5 +1,5 @@
 /**
- * ErrorPacket
+ * FormErrors
  */
 package com.socotech.wf4j;
 
@@ -21,16 +21,16 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 /**
- * <p>The ErrorPacket is a very simple object used to add error messages to wf4j pages.  It's basically just a map of strings to human-readable error descriptions.</p> <p/> <p>Right
+ * <p>The FormErrors is a very simple object used to add error messages to wf4j pages.  It's basically just a map of strings to human-readable error descriptions.</p> <p/> <p>Right
  * now these are all English language.</p> <p/> <p>Clients can iterate over the errors, if they're not sure what might have happened; or, if there is a well-known name, they can
- * look for it directly.  For example, the <code>ErrorPacket</code> for the login page has an error "password" if the password is wrong.</p>
+ * look for it directly.  For example, the <code>FormErrors</code> for the login page has an error "password" if the password is wrong.</p>
  */
-public class ErrorPacket extends AbstractMap<String, String> {
+public class FormErrors extends AbstractMap<String, String> {
 
     /**
      * <p>Constructor.</p>
      */
-    public ErrorPacket() {
+    public FormErrors() {
         // nop
     }
 
@@ -129,7 +129,7 @@ public class ErrorPacket extends AbstractMap<String, String> {
     }
 
     /**
-     * This method brings ErrorPacket in compliance with the Map interface
+     * This method brings FormErrors in compliance with the Map interface
      *
      * @return set of map entries
      */
@@ -166,7 +166,7 @@ public class ErrorPacket extends AbstractMap<String, String> {
     public String toString() {
 
         // Simple count of the errors
-        StringBuffer rv = new StringBuffer();
+        StringBuilder rv = new StringBuilder();
         rv.append(this.size());
         rv.append(" error");
         if (this.size() != 1) {
@@ -202,7 +202,7 @@ public class ErrorPacket extends AbstractMap<String, String> {
 
     /**
      * <p>Helper function that makes it easy to check to see if a parameter is in a request.  If the parameter's value is set, (that is, if it is not the empty string or null) then
-     * this method returns the value and leaves this ErrorPacket alone.  If the parameter's value is not set, however, then this method returns null and an appropriate error
+     * this method returns the value and leaves this FormErrors alone.  If the parameter's value is not set, however, then this method returns null and an appropriate error
      * message is added to this packet.</P>
      *
      * @param request The HTTP request being checked
@@ -224,7 +224,7 @@ public class ErrorPacket extends AbstractMap<String, String> {
     /**
      * The path to the current property
      */
-    private Stack<String> nesting = new Stack<String>();
+    private Stack<String> nesting = new Stack<>();
     /**
      * <p>A map of error codes to error descriptions.</p>
      */

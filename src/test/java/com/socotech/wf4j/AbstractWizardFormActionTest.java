@@ -164,7 +164,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     }
 
     @Override
-    protected void validatePage(HttpServletRequest request, Object command, ErrorPacket errors, int page) throws Exception {
+    protected void validatePage(HttpServletRequest request, Object command, FormErrors errors, int page) throws Exception {
       this.validatePageCalled = true;
     }
 

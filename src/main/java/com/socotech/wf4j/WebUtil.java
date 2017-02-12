@@ -279,7 +279,7 @@ public class WebUtil {
      */
     public static void dumpErrorsToRequest(HttpServletRequest req) {
         String attrName = "errors";
-        ErrorPacket errors = WebUtil.getAndRemoveSessionAttribute(req, attrName);
+        FormErrors errors = WebUtil.getAndRemoveSessionAttribute(req, attrName);
         if (errors != null && !errors.isEmpty()) {
             req.setAttribute(attrName, errors);
         }

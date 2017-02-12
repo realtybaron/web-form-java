@@ -111,7 +111,7 @@ public class AbstractSimpleFormActionTest extends TestCase {
     private class PostAction extends AbstractSimpleFormAction {
         protected void handleFormSubmission(HttpServletRequest request,
                                             HttpServletResponse response, Object o,
-                                            ErrorPacket errors)
+                                            FormErrors errors)
                 throws IOException, ServletException {
             TestForm form = (TestForm) o;
             List<String> array = Arrays.asList(form.getArray());
@@ -135,7 +135,7 @@ public class AbstractSimpleFormActionTest extends TestCase {
 
         @Override
         protected void doSubmit(HttpServletRequest request, HttpServletResponse response, Object o,
-                                ErrorPacket errors) throws Exception {
+                                FormErrors errors) throws Exception {
             // noop
         }
 
@@ -151,7 +151,7 @@ public class AbstractSimpleFormActionTest extends TestCase {
 
         @Override
         protected void showForm(HttpServletRequest request, HttpServletResponse response, Object o,
-                                ErrorPacket errors) throws Exception {
+                                FormErrors errors) throws Exception {
             Assert.assertTrue("Errors is not empty", errors.isEmpty());
         }
     }
@@ -174,10 +174,7 @@ public class AbstractSimpleFormActionTest extends TestCase {
         }
 
         @Override
-        protected void handleFormSubmission(HttpServletRequest request,
-                                            HttpServletResponse response, Object o,
-                                            ErrorPacket errors)
-                throws IOException, ServletException {
+        protected void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
             TestForm form = (TestForm) o;
             Assert.assertEquals("String was not nullified", null, form.getString());
             Assert.assertEquals("int was not nullified", 0, form.getInteger());
@@ -196,7 +193,7 @@ public class AbstractSimpleFormActionTest extends TestCase {
         @Override
         protected void handleFormSubmission(HttpServletRequest request,
                                             HttpServletResponse response, Object o,
-                                            ErrorPacket errors)
+                                            FormErrors errors)
                 throws IOException, ServletException {
             // noop
         }

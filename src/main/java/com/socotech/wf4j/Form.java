@@ -9,8 +9,8 @@ import java.lang.annotation.Target;
 /**
  * Form.java
  */
-@Inherited
 @Target(ElementType.TYPE)
+@Inherited
 @Retention(RetentionPolicy.RUNTIME)
 public @interface Form {
 	/**
