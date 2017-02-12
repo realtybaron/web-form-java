@@ -4,12 +4,9 @@ import java.beans.PropertyEditor;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
-import java.util.HashMap;
-import java.util.HashSet;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
@@ -18,6 +15,9 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
+import com.google.common.collect.Sets;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -52,14 +52,13 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @throws Exception if something bad happens
      */
     protected Map<String, Object> getAuxiliaryData(HttpServletRequest request, Object o) throws Exception {
-        return new HashMap<String, Object>();
-        //return Collections.emptyMap();
+        return Maps.newHashMap();
     }
 
     /**
      * Constructs a form object and, if specified, stores it in the session for later use
      *
-     * @param req wf4j request
+     * @param req form request
      * @return form object
      * @throws Exception if object cannot be instantiated
      */
@@ -113,7 +112,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     @SuppressWarnings("unchecked")
     protected void bindFormObject(HttpServletRequest request, Object o, FormErrors errors) throws Exception {
         // assemble parameter map
-        Map<String, String[]> parameters = new HashMap<String, String[]>();
+        Map<String, String[]> parameters = Maps.newHashMap();
         if (!ServletFileUpload.isMultipartContent(request)) {
             // process as standard request
             Enumeration names = request.getParameterNames();
@@ -160,7 +159,7 @@ public abstract class AbstractFormAction extends AbstractAction {
             }
         }
         // copy param keys to list
-        List<String> paramKeys = new ArrayList<String>(parameters.keySet());
+        List<String> paramKeys = Lists.newArrayList(parameters.keySet());
         // sort by name so we bind in ancestral order
         Collections.sort(paramKeys);
         // bind simple form fields to form object
@@ -174,7 +173,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                     // resolve binders based on type and path
                     Set<FormBinder> binders = this.getBinders(type, fieldPath);
                     // re-package array as collection
-                    Set<String> values = new HashSet<String>(Arrays.asList(valueArray));
+                    Set<String> values = Sets.newHashSet(valueArray);
                     // determine if field is an array
                     if (type.isArray()) {
                         // get the underlying class of this array
@@ -182,7 +181,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                         // determine if field is enum
                         if (type.isEnum()) {
                             // array of enums; try to resolve value if not blank
-                            Set<Enum> enums = new HashSet<Enum>();
+                            Set<Enum> enums = Sets.newHashSet();
                             for (String value : values) {
                                 if (StringUtils.isNotBlank(value)) {
                                     Class<Enum> ce = (Class<Enum>) type;
@@ -195,7 +194,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                             BeanUtils.setProperty(o, fieldName, object);
                         } else {
                             // array of primitive or object types
-                            Set<Object> objects = new HashSet<Object>();
+                            Set<Object> objects = Sets.newHashSet();
                             for (String value : values) {
                                 Object obj = value;
                                 // try to match using equality; otherwise, try to match using a regular expression
@@ -280,7 +279,7 @@ public abstract class AbstractFormAction extends AbstractAction {
      */
     @SuppressWarnings("unchecked")
     private Set<FormBinder> getBinders(Class type, String path) {
-        Set<FormBinder> set = new HashSet<FormBinder>();
+        Set<FormBinder> set = Sets.newHashSet();
         FormBinder[] binders = this.getClass().getAnnotation(Form.class).binders();
         for (FormBinder binder : binders) {
             if (binder.typeClass().isAssignableFrom(type)) {
@@ -542,5 +541,5 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * <p/> A logging category for each action. </p>
      */
-    private static Logger log = Logger.getLogger(AbstractFormAction.class);
+    private static final Logger log = Logger.getLogger(AbstractFormAction.class);
 }

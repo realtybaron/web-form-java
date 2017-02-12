@@ -4,7 +4,8 @@ version '1.0-SNAPSHOT'
 
 apply plugin: 'java'
 
-sourceCompatibility = 1.7
+sourceCompatibility = JavaVersion.VERSION_1_7
+targetCompatibility = JavaVersion.VERSION_1_7
 
 repositories {
     jcenter()
@@ -13,7 +14,7 @@ repositories {
 
 dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
-    compile group: 'com.google.guava', name: 'guava', version: '21.0'
+    compile group: 'com.google.guava', name: 'guava', version: '19.0'
     compile group: 'com.google.inject', name: 'guice', version: '4.1.0'
     compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
     compile group: 'log4j', name: 'log4j', version: '1.2.17'
