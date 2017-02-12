@@ -14,28 +14,10 @@ import org.apache.log4j.Logger;
 
 /**
  * <p/> Provides basic services that all actions need, and provides reasonable defaults. </p> <p/> <p/> This class provides storage for the name of the action, and a static logging
- * category for all action objects. Actions derived from this object do not require authorization by default; if your derived action needs a member to be signed in in order to run
+ * category for all action objects. WebActions derived from this object do not require authorization by default; if your derived action needs a member to be signed in in order to run
  * it, override <code>mustBeSignedIn</code>. </p>
  */
-public abstract class AbstractAction implements FormAction {
-    /**
-     * <p/> Constructs a new un-named action. Sets as its name the simple name of the class without the word "action" -- for example, if the class is <code>FooBarAction</code>,
-     * then the name of this action is "fooBar". </p>
-     */
-    protected AbstractAction() {
-        String cname = this.getClass().getSimpleName();
-        this.name = StringUtils.uncapitalize(StringUtils.chomp(cname, "Action"));
-    }
-
-    /**
-     * <p/> Constructs a new named action. </p>
-     *
-     * @param name The name of the action
-     */
-    protected AbstractAction(String name) {
-        this.name = name;
-    }
-
+public abstract class AbstractAction implements WebExecutable {
     /**
      * <p/> Returns this action's short, alphanumeric name. The name is used to run the action in a server; for example, the URL <code>/controller/foobar</code> will run the action
      * named "foobar". </p>
@@ -44,16 +26,6 @@ public abstract class AbstractAction implements FormAction {
      */
     public String getName() {
         return name;
-    }
-
-    /**
-     * <p/> Returns the string form of this action, which is basically just its name. </p>
-     *
-     * @return The string form of the action
-     */
-    @Override
-    public String toString() {
-        return "Action " + name;
     }
 
     /**
@@ -101,7 +73,7 @@ public abstract class AbstractAction implements FormAction {
 
     /**
      * <p/> Forwards to the specified page. This does not cause a new HTTP request, and the URL in the user's browser remains the same, but control is passed to the new page. </p>
-     * <p/> Note that it is important to forward to JSP pages; Actions (.act pages) should be redirected. This is to ensure that the sessions are not prematurely closed. </p>
+     * <p/> Note that it is important to forward to JSP pages; WebActions (.act pages) should be redirected. This is to ensure that the sessions are not prematurely closed. </p>
      *
      * @param request  The HTTP request to service from the client
      * @param response The HTTP response for the server to write
@@ -110,17 +82,6 @@ public abstract class AbstractAction implements FormAction {
      * @throws ServletException
      */
     protected void forwardTo(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
-
-        // Make sure we're not forwarding to an ACT page
-        int dotpos = StringUtils.lastIndexOf(page, '.');
-        if (dotpos >= 0) {
-            String extension = StringUtils.substring(page, dotpos + 1);
-            if (extension.equals("act")) {
-                throw new ServletException("Attempt to forward to " + page + " is illegal because it is an action. Use redirect instead.");
-            }
-        }
-
-        // Simply forward
         log.debug(this + " forwarding to " + page);
         request.getRequestDispatcher(page).forward(request, response);
     }
@@ -166,7 +127,6 @@ public abstract class AbstractAction implements FormAction {
      * @throws ServletException
      */
     protected void renderWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
-
         // If there's no error packet, create a new one
         if (errors == null) {
             errors = new FormErrors();

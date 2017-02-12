@@ -6,7 +6,7 @@ package com.socotech.wf4j;
  * Date: 2/11/17
  * Time: 3:58 PM
  */
-public @interface Action {
+public @interface WebAction {
     /**
      * Class name
      *

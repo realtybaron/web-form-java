@@ -15,11 +15,11 @@ import java.lang.annotation.Target;
 @Target(ElementType.TYPE)
 @Inherited
 @Retention(RetentionPolicy.RUNTIME)
-public @interface Actions {
+public @interface WebActions {
     /**
-     * Actions
+     * WebActions
      *
      * @return actions
      */
-    Action[] actions();
+    WebAction[] actions();
 }

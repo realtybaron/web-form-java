@@ -11,6 +11,6 @@ import javax.servlet.http.HttpServletResponse;
  * Date: 2/11/17
  * Time: 4:13 PM
  */
-public interface FormAction {
+public interface WebExecutable {
     void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException;
 }

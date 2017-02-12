@@ -29,8 +29,8 @@ import org.reflections.util.ConfigurationBuilder;
  */
 public class WF4JController extends HttpServlet {
     private Injector injector;
-    private List<Action> actions;
-    private Map<Class, FormAction> actionMap;
+    private List<WebAction> actions;
+    private Map<Class, WebExecutable> actionMap;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
@@ -41,9 +41,9 @@ public class WF4JController extends HttpServlet {
 
         URL url = ClasspathHelper.forWebInfClasses(config.getServletContext());
         Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(url));
-        Set<Class<?>> actionClasses = reflections.getTypesAnnotatedWith(Action.class);
+        Set<Class<?>> actionClasses = reflections.getTypesAnnotatedWith(WebAction.class);
         for (Class<?> actionClass : actionClasses) {
-            Collections.addAll(this.actions, actionClass.getAnnotation(Actions.class).actions());
+            Collections.addAll(this.actions, actionClass.getAnnotation(WebActions.class).actions());
         }
     }
 
@@ -55,19 +55,19 @@ public class WF4JController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String actionURL = Requests.getRequestUri(req);
-        for (Action action : actions) {
+        for (WebAction action : actions) {
             UriPatternMatcher matcher = UriPatternType.get(UriPatternType.SERVLET, action.path());
             if (matcher != null && matcher.matches(actionURL)) {
-                FormAction formAction = actionMap.get(action.type());
-                if (formAction == null) {
+                WebExecutable formExecutable = actionMap.get(action.type());
+                if (formExecutable == null) {
                     try {
-                        formAction = (FormAction) injector.getInstance(action.type());
-                        actionMap.put(action.type(), formAction);
+                        formExecutable = (WebExecutable) injector.getInstance(action.type());
+                        actionMap.put(action.type(), formExecutable);
                     } catch (Exception e) {
                         throw new ServletException(e);
                     }
                 }
-                formAction.execute(req, resp);
+                formExecutable.execute(req, resp);
                 return;
             }
         }
