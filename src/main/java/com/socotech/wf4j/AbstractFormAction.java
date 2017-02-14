@@ -199,7 +199,6 @@ public abstract class AbstractFormAction extends AbstractAction {
                                 Object obj = value;
                                 // try to match using equality; otherwise, try to match using a regular expression
                                 for (FormBinder binder : binders) {
-                                    Class clazz = binder.editorClass();
                                     PropertyEditor pe = this.newPropertyEditor(request, binder);
                                     pe.setAsText(value);
                                     obj = pe.getValue();
