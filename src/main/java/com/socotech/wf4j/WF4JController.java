@@ -17,6 +17,7 @@ import com.google.common.collect.Lists;
 import com.google.inject.Injector;
 import com.google.inject.servlet.UriPatternMatcher;
 import com.google.inject.servlet.UriPatternType;
+import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
@@ -54,23 +55,35 @@ public class WF4JController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // init vars
         String actionURL = Requests.getRequestUri(req);
+        WebExecutable executable = null;
+        // find web action
         for (WebAction action : actions) {
             UriPatternMatcher matcher = UriPatternType.get(UriPatternType.SERVLET, action.path());
             if (matcher != null && matcher.matches(actionURL)) {
-                WebExecutable formExecutable = actionMap.get(action.type());
-                if (formExecutable == null) {
+                executable = actionMap.get(action.type());
+                if (executable == null) {
                     try {
-                        formExecutable = (WebExecutable) injector.getInstance(action.type());
-                        actionMap.put(action.type(), formExecutable);
+                        executable = (WebExecutable) injector.getInstance(action.type());
+                        actionMap.put(action.type(), executable);
+                        break;
                     } catch (Exception e) {
-                        throw new ServletException(e);
+                        log.error(e.getMessage(), e);
                     }
                 }
-                formExecutable.execute(req, resp);
-                return;
             }
         }
-        resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        // found an action?
+        if (executable != null) {
+            executable.execute(req, resp);
+        } else {
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
+        }
     }
+
+    /**
+     * <p/> A logging category for each action. </p>
+     */
+    private static final Logger log = Logger.getLogger(WF4JController.class);
 }
