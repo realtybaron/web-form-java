@@ -5,6 +5,8 @@ import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
+import com.google.common.base.Supplier;
+
 /**
  * Created with IntelliJ IDEA.
  * User: marc
@@ -20,13 +22,13 @@ public class GrowthList<E> {
      * @throws NullPointerException if list is null
      * @since 4.0
      */
-    public static <E> List<E> get() {
+    public static <E> List<E> get(final Supplier<E> supplier) {
         return new ArrayList<E>() {
             @Override
             public E get(int index) {
                 final int size = super.size();
                 if (index >= size) {
-                    super.addAll(Collections.<E>nCopies((index - size) + 1, null));
+                    super.addAll(Collections.<E>nCopies((index - size) + 1, supplier.get()));
                 }
                 return super.get(index);
             }
