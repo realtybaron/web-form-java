@@ -25,8 +25,8 @@ public class GrowthList<E> {
             @Override
             public E get(int index) {
                 final int size = super.size();
-                if (index > size) {
-                    super.addAll(Collections.<E>nCopies(index - size, null));
+                if (index >= size) {
+                    super.addAll(Collections.<E>nCopies((index - size) + 1, null));
                 }
                 return super.get(index);
             }
