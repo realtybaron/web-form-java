@@ -1,7 +1,3 @@
-/**
- * RequestBuilderTest.java
- * (C) Copyright 2005 iCopyright, Inc.  All rights reserved.
- */
 package com.socotech.wf4j;
 
 import java.util.HashMap;

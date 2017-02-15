@@ -15,9 +15,6 @@ import junit.framework.TestCase;
 import org.easymock.classextension.EasyMock;
 import org.junit.Test;
 
-/**
- * AbstractWizardFormActionTest.java (C) Copyright 2005 iCopyright, Inc.  All rights reserved.
- */
 public class AbstractWizardFormActionTest extends TestCase {
   final HttpSession session = EasyMock.createNiceMock(HttpSession.class);
   final HttpServletRequest request = EasyMock.createNiceMock(HttpServletRequest.class);

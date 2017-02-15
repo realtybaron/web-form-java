@@ -1,7 +1,3 @@
-/**
- * WebUtilTest.java
- * (C) Copyright 2007-2009 iCopyright, Inc.  All rights reserved.
- */
 package com.socotech.wf4j;
 
 import javax.servlet.http.HttpServletRequest;

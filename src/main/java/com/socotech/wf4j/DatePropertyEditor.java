@@ -6,9 +6,6 @@ import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
 
-/**
- * DatePropertyEditor.java (C) Copyright 2005 iCopyright, Inc.  All rights reserved.
- */
 public class DatePropertyEditor extends PropertyEditorSupport {
     private boolean allowEmpty;
 

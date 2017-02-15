@@ -1,7 +1,3 @@
-/**
- * ErrorPacketTest
- * (C) Copyright 2005-2007 iCopyright, Inc.  All rights reserved.
- */
 package com.socotech.wf4j;
 
 import java.util.Set;
@@ -12,7 +8,7 @@ import junit.framework.TestCase;
 /**
  * Test the error packet
  */
-public class ErrorPacketTest extends TestCase {
+public class FormErrorsTest extends TestCase {
 
 	/**
 	 * Run these tests from the command line
@@ -20,7 +16,7 @@ public class ErrorPacketTest extends TestCase {
 	 * @param args
 	 */
 	public static void main(String[] args) {
-		junit.textui.TestRunner.run(ErrorPacketTest.class);
+		junit.textui.TestRunner.run(FormErrorsTest.class);
 	}
 
 	/**

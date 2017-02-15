@@ -6,10 +6,19 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import junit.framework.TestCase;
+import org.junit.Assert;
+import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
-public class ReflectTest extends TestCase {
+import static junit.framework.TestCase.assertNotNull;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
+@RunWith(JUnit4.class)
+public class ReflectTest {
+
+    @Test
     public void testPrimitiveProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "primitive");
@@ -17,38 +26,44 @@ public class ReflectTest extends TestCase {
         assertTrue(field.getType().isPrimitive());
     }
 
+    @Test
     public void testArrayProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "array");
-        assertNotNull(field);
+        Assert.assertNotNull(field);
         assertTrue(field.getType().isArray());
         assertEquals(String.class, field.getType().getComponentType());
     }
 
+    @Test
     public void testNestedProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "component.simple");
         assertEquals("simple", field.getName());
     }
 
+    @Test
     public void testSimpleIndexedProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "list[0]");
         assertEquals("list", field.getName());
     }
 
+    @Test
     public void testNestedIndexedProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "list[0].indexed");
         assertEquals("indexed", field.getName());
     }
 
+    @Test
     public void testMappedProperty() throws Exception {
         Container container = new Container();
         Field field = Reflect.getDeclaredField(container, "map(component).mapped");
         assertEquals("mapped", field.getName());
     }
 
+    @Test
     public void testPrimitiveSubProperty() throws Exception {
         SubContainer container = new SubContainer();
         Field field = Reflect.getDeclaredField(container, "primitive");
@@ -151,14 +166,5 @@ public class ReflectTest extends TestCase {
 
     public class SubContainer extends Container {
         // noop
-    }
-
-    /**
-     * Run these from the command line
-     *
-     * @param args common-line arguments
-     */
-    public static void main(String[] args) {
-        junit.textui.TestRunner.run(ReflectTest.class);
     }
 }

@@ -1,7 +1,3 @@
-/**
- * AbstractSimpleFormActionTest.java
- * (C) Copyright 2008 iCopyright, Inc.  All rights reserved.
- */
 package com.socotech.wf4j;
 
 import java.io.IOException;
