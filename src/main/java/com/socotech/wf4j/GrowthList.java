@@ -15,13 +15,12 @@ public class GrowthList<E> {
     /**
      * Factory method to create a growth list.
      *
-     * @param <E>  the type of the elements in the list
-     * @param list the list to decorate, must not be null
+     * @param <E> the type of the elements in the list
      * @return a new growth list
      * @throws NullPointerException if list is null
      * @since 4.0
      */
-    public static <E> List<E> growthList(final List<E> list) {
+    public static <E> List<E> get() {
         return new ArrayList<E>() {
             @Override
             public void add(int index, E element) {
