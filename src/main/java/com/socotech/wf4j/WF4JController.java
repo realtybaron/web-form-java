@@ -42,7 +42,7 @@ public class WF4JController extends HttpServlet {
 
         URL url = ClasspathHelper.forWebInfClasses(config.getServletContext());
         Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(url));
-        Set<Class<?>> actionClasses = reflections.getTypesAnnotatedWith(WebAction.class);
+        Set<Class<?>> actionClasses = reflections.getTypesAnnotatedWith(WebActions.class);
         for (Class<?> actionClass : actionClasses) {
             Collections.addAll(this.actions, actionClass.getAnnotation(WebActions.class).actions());
         }
