@@ -223,7 +223,6 @@ public abstract class AbstractFormAction extends AbstractAction {
                             // use form binders to convert...
                             Object object = value;
                             for (FormBinder binder : binders) {
-                                Class clazz = binder.editorClass();
                                 PropertyEditor pe = this.newPropertyEditor(request, binder);
                                 pe.setAsText(value);
                                 object = pe.getValue();
