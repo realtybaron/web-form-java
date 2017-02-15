@@ -10,7 +10,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p/> Provides basic services that all actions need, and provides reasonable defaults. </p> <p/> <p/> This class provides storage for the name of the action, and a static logging
@@ -232,5 +233,5 @@ public abstract class AbstractAction implements WebExecutable {
     /**
      * <p/> A logging category for each action. </p>
      */
-    private static Logger log = Logger.getLogger(AbstractAction.class);
+    private static Logger log = LoggerFactory.getLogger(AbstractAction.class);
 }

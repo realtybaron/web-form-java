@@ -13,7 +13,8 @@ import javax.servlet.http.HttpServletResponse;
 import org.apache.commons.lang.RandomStringUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 public abstract class AbstractSimpleFormAction extends AbstractFormAction {
 
@@ -244,5 +245,5 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
     /**
      * <p/> A logging category for each action. </p>
      */
-    private static Logger log = Logger.getLogger(AbstractSimpleFormAction.class);
+    private static Logger log = LoggerFactory.getLogger(AbstractSimpleFormAction.class);
 }

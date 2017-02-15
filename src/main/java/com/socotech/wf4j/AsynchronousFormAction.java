@@ -5,9 +5,10 @@ import java.io.PrintWriter;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.log4j.Logger;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * User: marc Date: Jun 6, 2010 Time: 1:16:02 PM
@@ -86,6 +87,6 @@ public abstract class AsynchronousFormAction extends AbstractFormAction {
         }
     }
 
-    private static Logger log = Logger.getLogger(AsynchronousFormAction.class);
+    private static Logger log = LoggerFactory.getLogger(AsynchronousFormAction.class);
 
 }

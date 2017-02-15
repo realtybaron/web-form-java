@@ -27,7 +27,8 @@ import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * AbstractFormAction
@@ -540,5 +541,5 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * <p/> A logging category for each action. </p>
      */
-    private static final Logger log = Logger.getLogger(AbstractFormAction.class);
+    private static final Logger log = LoggerFactory.getLogger(AbstractFormAction.class);
 }

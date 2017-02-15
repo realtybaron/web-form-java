@@ -15,7 +15,8 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * <p/> Helper methods for requests in the all wf4j applications. </p> <p/> Web applications should use the methods in this object to load the member that is currently logged in, if
@@ -440,5 +441,5 @@ public class Requests {
     /**
      * <p/> A logging category for this class. </p>
      */
-    private static Logger log = Logger.getLogger(Requests.class);
+    private static Logger log = LoggerFactory.getLogger(Requests.class);
 }

@@ -9,7 +9,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang.StringUtils;
-import org.apache.log4j.Logger;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * AbstractWizardFormAction.java
@@ -23,7 +24,6 @@ import org.apache.log4j.Logger;
  * @see UserScopeVariable#finish used to complete the wizard
  */
 public abstract class AbstractWizardFormAction extends AbstractFormAction {
-    private Logger log = Logger.getLogger(AbstractWizardFormAction.class);
 
     /**
      * If form is session scoped, but not found in the user's session, redirect to the beginning of the wizard.
@@ -423,4 +423,6 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     }
 
     public static final String FORM_OBJECT_PARAMS = "_form_object_params";
+
+    private static final Logger log = LoggerFactory.getLogger(AbstractWizardFormAction.class);
 }

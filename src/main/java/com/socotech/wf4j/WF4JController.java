@@ -17,10 +17,11 @@ import com.google.common.collect.Lists;
 import com.google.inject.Injector;
 import com.google.inject.servlet.UriPatternMatcher;
 import com.google.inject.servlet.UriPatternType;
-import org.apache.log4j.Logger;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * Created with IntelliJ IDEA.
@@ -85,5 +86,5 @@ public class WF4JController extends HttpServlet {
     /**
      * <p/> A logging category for each action. </p>
      */
-    private static final Logger log = Logger.getLogger(WF4JController.class);
+    private static final Logger log = LoggerFactory.getLogger(WF4JController.class);
 }
