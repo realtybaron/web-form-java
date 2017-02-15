@@ -46,15 +46,18 @@ public class Reflect {
             // remove the processed property from the expression
             name = resolver.remove(name);
         }
-        Class<?> clazz = o.getClass();
-        String canonicalName = name.replaceAll(Patterns.INDEX_REFERENCE.pattern(), "");
-        do {
-            try {
-                return clazz.getDeclaredField(canonicalName);
-            } catch (NoSuchFieldException e) {
-                clazz = clazz.getSuperclass();
-            }
-        } while (clazz != null);
+        // found it?
+        if (o != null) {
+            Class<?> clazz = o.getClass();
+            String canonicalName = name.replaceAll(Patterns.INDEX_REFERENCE.pattern(), "");
+            do {
+                try {
+                    return clazz.getDeclaredField(canonicalName);
+                } catch (NoSuchFieldException e) {
+                    clazz = clazz.getSuperclass();
+                }
+            } while (clazz != null);
+        }
         // no field in target class or any ancestor
         return null;
     }
