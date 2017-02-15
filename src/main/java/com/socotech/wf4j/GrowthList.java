@@ -23,8 +23,17 @@ public class GrowthList<E> {
     public static <E> List<E> get() {
         return new ArrayList<E>() {
             @Override
+            public E get(int index) {
+                final int size = super.size();
+                if (index > size) {
+                    super.addAll(Collections.<E>nCopies(index - size, null));
+                }
+                return super.get(index);
+            }
+
+            @Override
             public void add(int index, E element) {
-                final int size = size();
+                final int size = super.size();
                 if (index > size) {
                     super.addAll(Collections.<E>nCopies(index - size, null));
                 }
@@ -33,7 +42,7 @@ public class GrowthList<E> {
 
             @Override
             public boolean addAll(final int index, final Collection<? extends E> coll) {
-                final int size = size();
+                final int size = super.size();
                 boolean result = false;
                 if (index > size) {
                     super.addAll(Collections.<E>nCopies(index - size, null));
@@ -44,7 +53,7 @@ public class GrowthList<E> {
 
             @Override
             public E set(final int index, final E element) {
-                final int size = size();
+                final int size = super.size();
                 if (index >= size) {
                     super.addAll(Collections.<E>nCopies(index - size + 1, null));
                 }
