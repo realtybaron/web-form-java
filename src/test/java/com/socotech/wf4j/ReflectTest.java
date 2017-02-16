@@ -72,11 +72,11 @@ public class ReflectTest {
     }
 
     public class Container {
-        protected int primitive = 0;
-        protected String[] array = new String[0];
-        protected Component component = new Component();
-        protected List<Component> list = new ArrayList<Component>();
-        protected Map<String, Component> map = new HashMap<String, Component>();
+        private int primitive = 0;
+        private String[] array = new String[0];
+        private Component component = new Component();
+        private List<Component> list = new ArrayList<Component>();
+        private Map<String, Component> map = new HashMap<String, Component>();
 
         public Container() {
             this.list.add(new Component());

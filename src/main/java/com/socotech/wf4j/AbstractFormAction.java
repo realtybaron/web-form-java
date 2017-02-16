@@ -4,6 +4,8 @@ import java.beans.PropertyEditor;
 import java.io.IOException;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.Enumeration;
@@ -172,7 +174,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                 try {
                     Class<?> type = field.getType();
                     // resolve binders based on type and path
-                    Set<FormBinder> binders = this.getBinders(type, fieldPath);
+                    Set<FormBinder> binders = this.getBinders(field, fieldPath);
                     // re-package array as collection
                     Set<String> values = Sets.newHashSet(valueArray);
                     // determine if field is an array
@@ -277,17 +279,32 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @return set of binders
      */
     @SuppressWarnings("unchecked")
-    private Set<FormBinder> getBinders(Class type, String path) {
+    private Set<FormBinder> getBinders(Type type, String path) {
         Set<FormBinder> set = Sets.newHashSet();
         FormBinder[] binders = this.getClass().getAnnotation(Form.class).binders();
         for (FormBinder binder : binders) {
-            if (binder.typeClass().isAssignableFrom(type)) {
+            if (binder.typeClass().isAssignableFrom(type.getClass())) {
                 if (binder.property().equals(path) || Pattern.compile(binder.property()).matcher(path).matches()) {
                     set.add(binder);
                 }
             }
         }
         return set;
+    }
+
+    /**
+     * Extract binders for a specific form property
+     *
+     * @param field the field of the property
+     * @param path  path to property
+     * @return set of binders
+     */
+    private Set<FormBinder> getBinders(Field field, String path) {
+        Type type = field.getType();
+        if (field.getGenericType() instanceof ParameterizedType) {
+            type = ParameterizedType.class.cast(field.getGenericType()).getActualTypeArguments()[0].getClass();
+        }
+        return this.getBinders(type, path);
     }
 
     /**

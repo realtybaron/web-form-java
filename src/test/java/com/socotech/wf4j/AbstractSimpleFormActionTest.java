@@ -14,13 +14,18 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
-import junit.framework.TestCase;
 import org.easymock.classextension.EasyMock;
 import org.junit.Assert;
 import org.junit.Test;
+import org.junit.runner.RunWith;
+import org.junit.runners.JUnit4;
 
+import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
+
+@RunWith(JUnit4.class)
 @SuppressWarnings("unchecked")
-public class AbstractSimpleFormActionTest extends TestCase {
+public class AbstractSimpleFormActionTest {
     @Test
     public void testPost() throws Exception {
         final AbstractSimpleFormAction action = new PostAction();
@@ -102,36 +107,27 @@ public class AbstractSimpleFormActionTest extends TestCase {
 
     @Form(name = "testForm",
             formClass = TestForm.class,
-            binders = {@FormBinder(property = "date", editorClass = DatePropertyEditor.class)},
-            sessionForm = false)
+            binders = {@FormBinder(property = "date", editorClass = DatePropertyEditor.class)})
     private class PostAction extends AbstractSimpleFormAction {
-        protected void handleFormSubmission(HttpServletRequest request,
-                                            HttpServletResponse response, Object o,
-                                            FormErrors errors)
-                throws IOException, ServletException {
+        protected void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
             TestForm form = (TestForm) o;
             List<String> array = Arrays.asList(form.getArray());
-            assertTrue("Unable to extract array element #1 from request",
-                    array.contains("string0"));
-            assertTrue("Unable to extract array element #2 from request",
-                    array.contains("string1"));
+            assertTrue("Unable to extract array element #1 from request", array.contains("string0"));
+            assertTrue("Unable to extract array element #2 from request", array.contains("string1"));
             Assert.assertEquals("Unable to extract String from request", "my string", form.getString());
             Assert.assertEquals("Unable to extract int from request", 1, form.getInteger());
             Assert.assertEquals("Unable to extract double from request", 3.14, form.getDoubl(), 0);
             Assert.assertEquals("Unable to extract boolean from request", true, form.isBool());
             Assert.assertEquals("Unable to extract Long from request", 1, form.getLongs().longValue());
             try {
-                Assert.assertEquals("Unable to extract Date from request",
-                        DateManager.humanStringToDate("11/19/1973"),
-                        form.getDate());
+                Assert.assertEquals("Unable to extract Date from request", DateManager.humanStringToDate("11/19/1973"), form.getDate());
             } catch (ParseException e) {
                 fail(e.getMessage());
             }
         }
 
         @Override
-        protected void doSubmit(HttpServletRequest request, HttpServletResponse response, Object o,
-                                FormErrors errors) throws Exception {
+        protected void doSubmit(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
             // noop
         }
 
@@ -146,16 +142,14 @@ public class AbstractSimpleFormActionTest extends TestCase {
         }
 
         @Override
-        protected void showForm(HttpServletRequest request, HttpServletResponse response, Object o,
-                                FormErrors errors) throws Exception {
-            Assert.assertTrue("Errors is not empty", errors.isEmpty());
+        protected void showForm(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+            assertTrue("Errors is not empty", errors.isEmpty());
         }
     }
 
     @Form(name = "testForm",
             formClass = TestForm.class,
-            binders = {@FormBinder(property = "date", editorClass = DatePropertyEditor.class)},
-            sessionForm = false)
+            binders = {@FormBinder(property = "date", editorClass = DatePropertyEditor.class)})
     private class NullifyAction extends PostAction {
         @Override
         protected Object getFormObject(HttpServletRequest req) throws Exception {
@@ -181,31 +175,11 @@ public class AbstractSimpleFormActionTest extends TestCase {
         }
     }
 
-    @Form(name = "testForm",
-            formClass = TestForm.class,
-            validatorClass = TestFormValidator.class,
-            sessionForm = false)
+    @Form(name = "testForm", formClass = TestForm.class, validatorClass = TestFormValidator.class)
     private class ValidatedAction extends PostAction {
         @Override
-        protected void handleFormSubmission(HttpServletRequest request,
-                                            HttpServletResponse response, Object o,
-                                            FormErrors errors)
-                throws IOException, ServletException {
+        protected void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
             // noop
         }
-    }
-
-    // need this for ant junit task
-    public static junit.framework.Test suite() {
-        return new junit.framework.JUnit4TestAdapter(AbstractSimpleFormActionTest.class);
-    }
-
-    /**
-     * Run these tests from the command line
-     *
-     * @param args cmd line arguments
-     */
-    public static void main(String[] args) {
-        junit.textui.TestRunner.run(AbstractSimpleFormActionTest.class);
     }
 }
