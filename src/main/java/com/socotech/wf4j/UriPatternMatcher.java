@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.inject.servlet;
+package com.socotech.wf4j;
 
 /**
  * A general interface for matching a URI against a URI pattern. Guice-servlet provides regex and

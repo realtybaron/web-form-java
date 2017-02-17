@@ -15,8 +15,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.google.common.collect.Lists;
 import com.google.inject.Injector;
-import com.google.inject.servlet.UriPatternMatcher;
-import com.google.inject.servlet.UriPatternType;
 import org.reflections.Reflections;
 import org.reflections.util.ClasspathHelper;
 import org.reflections.util.ConfigurationBuilder;

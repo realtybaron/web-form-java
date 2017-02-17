@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package com.google.inject.servlet;
+package com.socotech.wf4j;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

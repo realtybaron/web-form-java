@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.google.inject.servlet;
+package com.socotech.wf4j;
 
 import java.nio.charset.Charset;
 import java.util.ArrayList;
