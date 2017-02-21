@@ -35,8 +35,8 @@ import static com.google.common.base.Preconditions.checkNotNull;
  * @author ntang@google.com (Michael Tang)
  */
 final class ServletUtils {
-    private static final Splitter SLASH_SPLITTER = Splitter.on('/');
     private static final Joiner SLASH_JOINER = Joiner.on('/');
+    private static final Splitter SLASH_SPLITTER = Splitter.on('/');
 
     private ServletUtils() {
         // private to prevent instantiation.

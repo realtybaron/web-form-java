@@ -299,11 +299,23 @@ public abstract class AbstractFormAction extends AbstractAction {
         return true;
     }
 
+    /**
+     * Create a new validator. By default, it simply creates a new instance of the class.
+     * <p>
+     * Sub-classes can override this method to do something fancier, i.e. instantiate via DI/IoC
+     *
+     * @param request web request
+     * @param clazz   class type
+     * @return new form validator instance
+     */
+    protected FormValidator newFormValidator(HttpServletRequest request, Class clazz) throws Exception {
+        return (FormValidator) clazz.newInstance();
+    }
 
     /**
      * Given a form binder, resolve the proper property editor.  Sub-classes can override to add specialized handling, i.e. currency editor.
      *
-     * @param request wf4j request
+     * @param request web request
      * @param binder  form binder
      * @return new instance of editor class
      * @throws Exception if editor class cannot be instantiated
@@ -384,22 +396,9 @@ public abstract class AbstractFormAction extends AbstractAction {
     protected void validateFormObject(HttpServletRequest request, Object o, FormErrors errors) throws Exception {
         Form form = this.getClass().getAnnotation(Form.class);
         if (!form.validatorClass().equals(void.class)) {
-            FormValidator validator = (FormValidator) form.validatorClass().newInstance();
-            this.initValidator(request, o, validator);
+            FormValidator validator = this.newFormValidator(request, form.validatorClass());
             validator.validate(o, errors);
         }
-    }
-
-    /**
-     * After binding, but before validation of form object
-     *
-     * @param req wf4j request
-     * @param o   form object
-     * @param v   form validator
-     * @throws Exception if validator cannot be initialized
-     */
-    protected void initValidator(HttpServletRequest req, Object o, FormValidator v) throws Exception {
-        // noop
     }
 
     /**
