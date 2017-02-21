@@ -305,11 +305,11 @@ public abstract class AbstractFormAction extends AbstractAction {
      * Sub-classes can override this method to do something fancier, i.e. instantiate via DI/IoC
      *
      * @param request web request
-     * @param clazz   class type
+     * @param form    form spec
      * @return new form validator instance
      */
-    protected FormValidator newFormValidator(HttpServletRequest request, Class clazz) throws Exception {
-        return (FormValidator) clazz.newInstance();
+    protected FormValidator newFormValidator(HttpServletRequest request, Form form) throws Exception {
+        return (FormValidator) form.validatorClass().newInstance();
     }
 
     /**
@@ -396,8 +396,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     protected void validateFormObject(HttpServletRequest request, Object o, FormErrors errors) throws Exception {
         Form form = this.getClass().getAnnotation(Form.class);
         if (!form.validatorClass().equals(void.class)) {
-            FormValidator validator = this.newFormValidator(request, form.validatorClass());
-            validator.validate(o, errors);
+            this.newFormValidator(request, form).validate(o, errors);
         }
     }
 
