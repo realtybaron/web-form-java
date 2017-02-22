@@ -28,13 +28,6 @@ import org.json.JSONObject;
 public class FormErrors extends AbstractMap<String, String> {
 
     /**
-     * <p>Constructor.</p>
-     */
-    public FormErrors() {
-        // nop
-    }
-
-    /**
      * Push a nested property onto the property stack
      *
      * @param property deeper property
@@ -55,7 +48,7 @@ public class FormErrors extends AbstractMap<String, String> {
     /**
      * <p>Sets the human-readable error description for the given code. Neither the code nor the description should be null.</p>
      *
-     * @param code The error code
+     * @param code        The error code
      * @param description The human-readable description
      */
     @Override
@@ -205,9 +198,9 @@ public class FormErrors extends AbstractMap<String, String> {
      * this method returns the value and leaves this FormErrors alone.  If the parameter's value is not set, however, then this method returns null and an appropriate error
      * message is added to this packet.</P>
      *
-     * @param request The HTTP request being checked
+     * @param request   The HTTP request being checked
      * @param parameter The required parameter (like "password" or "screenname")
-     * @param message The message to display if the value isn't there
+     * @param message   The message to display if the value isn't there
      * @return The parameter's value or null if it wasn't there
      */
     public String checkRequiredValue(HttpServletRequest request, String parameter, String message) {
