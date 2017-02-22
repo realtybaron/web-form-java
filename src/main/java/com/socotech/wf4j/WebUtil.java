@@ -12,12 +12,13 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import com.google.common.base.Strings;
 import org.apache.commons.collections.set.ListOrderedSet;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
 
 /**
- * <p/> A set of static methods useful in wf4j applications. </p>
+ * <p/> A set of static methods useful in web applications. </p>
  */
 public class WebUtil {
 
@@ -36,7 +37,7 @@ public class WebUtil {
      * @return the full URI
      */
     public static String getFullRequestURI(HttpServletRequest request) {
-        StringBuffer uri = new StringBuffer(request.getRequestURI());
+        StringBuilder uri = new StringBuilder(request.getRequestURI());
         String qs = request.getQueryString();
         if (StringUtils.isNotEmpty(qs)) {
             uri.append("?");
@@ -268,7 +269,7 @@ public class WebUtil {
      */
     @SuppressWarnings("unchecked")
     public static void addMessage(HttpServletRequest req, String message) {
-        Set<String> messages = WebUtil.getOrCreateSessionAttribute(req, SharedScopeVariable.message_list.name(), new ListOrderedSet());
+        Set<String> messages = WebUtil.getOrCreateSessionAttribute(req, WF4JScopeVariable.message_list.name(), new ListOrderedSet());
         messages.add(message);
     }
 
@@ -291,7 +292,7 @@ public class WebUtil {
      * @param req wf4j request
      */
     public static void dumpMessagesToRequest(HttpServletRequest req) {
-        String attrName = SharedScopeVariable.message_list.name();
+        String attrName = WF4JScopeVariable.message_list.name();
         Set<String> set = WebUtil.getAndRemoveSessionAttribute(req, attrName);
         if (set != null && !set.isEmpty()) {
             req.setAttribute(attrName, set);
@@ -303,19 +304,18 @@ public class WebUtil {
      *
      * @param response the response object
      * @param html     the HTML to send
-     * @throws IOException
+     * @throws IOException i/o exception
      */
     public static void dumpHtmlToResponse(HttpServletResponse response, String html) throws IOException {
-        if (StringUtils.isEmpty(html)) {
-            return;
+        if (!Strings.isNullOrEmpty(html)) {
+            response.setContentType("text/html; charset=utf-8");
+            response.setContentLength(html.length());
+            OutputStream o = response.getOutputStream();
+            byte[] bytes = html.getBytes();
+            o.write(bytes);
+            o.flush();
+            o.close();
         }
-        response.setContentType("text/html; charset=utf-8");
-        response.setContentLength(html.length());
-        OutputStream o = response.getOutputStream();
-        byte[] bytes = html.getBytes();
-        o.write(bytes);
-        o.flush();
-        o.close();
     }
 
 

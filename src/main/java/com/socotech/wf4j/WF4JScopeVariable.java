@@ -1,13 +1,14 @@
 package com.socotech.wf4j;
 
-/**
- * SharedScopeVariable.java
- */
-public enum SharedScopeVariable {
+public enum WF4JScopeVariable {
     /**
      * A generic "name" attribute
      */
     name,
+    /**
+     * Error list
+     */
+    error_list,
     /**
      * List of user messages
      */
@@ -17,9 +18,5 @@ public enum SharedScopeVariable {
      */
     page,
     date_end,
-    date_start,
-    /**
-     * The ID of the logged in member
-     */
-    logged_in_member_id;
+    date_start
 }

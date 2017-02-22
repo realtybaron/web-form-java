@@ -461,11 +461,10 @@ public abstract class AbstractFormAction extends AbstractAction {
         }
     }
 
-  /*
-  * Called early in the execute process.
-  * return true if you are redirecting the request outside of the process.
-  */
-
+    /**
+     * Called early in the execute process.
+     * return true if you are redirecting the request outside of the process.
+     */
     protected boolean redirectRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return false;
     }

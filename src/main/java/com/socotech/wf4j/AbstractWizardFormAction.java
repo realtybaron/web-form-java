@@ -68,7 +68,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     protected final void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
         try {
             // find current page
-            int page = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
+            int page = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
             // back, forward, existing, or finishing?
             if (this.isExitSubmission(request)) {
                 // exit from wizard
@@ -158,7 +158,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final boolean onBind(HttpServletRequest req, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
-        int pageNumber = Requests.getIntParameter(req, SharedScopeVariable.page.name(), -1);
+        int pageNumber = Requests.getIntParameter(req, WF4JScopeVariable.page.name(), -1);
         this.onBind(req, o, errors, pageNumber);
         return false;
     }
@@ -174,7 +174,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final void validateFormObject(HttpServletRequest request, Object command, FormErrors o) throws Exception {
-        int pageNumber = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
+        int pageNumber = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
         this.validatePage(request, command, o, pageNumber);
     }
 
@@ -189,7 +189,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final void showForm(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
-        int page = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
+        int page = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
         this.showPage(request, response, o, errors, page);
     }
 
@@ -407,7 +407,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @return true, if leaving wizard without finishing it
      */
     protected boolean isExitSubmission(HttpServletRequest request) {
-        int pageNumber = Requests.getIntParameter(request, SharedScopeVariable.page.name(), 0);
+        int pageNumber = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
         return pageNumber == 0 && this.isBackSubmission(request);
     }
 

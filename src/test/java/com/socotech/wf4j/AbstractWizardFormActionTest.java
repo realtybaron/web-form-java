@@ -27,7 +27,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     EasyMock.expect(request.getMethod()).andReturn("post");
     EasyMock.expect(request.getContentType()).andReturn("application/x-www-form-urlencoded");
     EasyMock.expect(request.getSession()).andReturn(session).anyTimes();
-    EasyMock.expect(request.getParameter(SharedScopeVariable.page.name())).andReturn(String.valueOf(0)).anyTimes();
+    EasyMock.expect(request.getParameter(WF4JScopeVariable.page.name())).andReturn(String.valueOf(0)).anyTimes();
     EasyMock.expect(request.getParameterMap()).andReturn(new HashMap()).anyTimes();
     EasyMock.expect(request.getParameterNames()).andReturn(new Vector().elements()).anyTimes();
     EasyMock.expect(request.getParameter(UserScopeVariable.choice.name())).andReturn(null).anyTimes();
@@ -48,7 +48,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     EasyMock.expect(request.getContentType()).andReturn("application/x-www-form-urlencoded");
     EasyMock.expect(request.getSession()).andReturn(session).anyTimes();
     EasyMock.expect(session.getAttribute("testForm")).andReturn(null).anyTimes();
-    EasyMock.expect(request.getParameter(SharedScopeVariable.page.name())).andReturn(String.valueOf(0)).anyTimes();
+    EasyMock.expect(request.getParameter(WF4JScopeVariable.page.name())).andReturn(String.valueOf(0)).anyTimes();
     EasyMock.expect(request.getParameterMap()).andReturn(new HashMap()).anyTimes();
     EasyMock.expect(request.getParameterNames()).andReturn(new Vector().elements()).anyTimes();
     EasyMock.expect(request.getParameter(UserScopeVariable.choice.name())).andReturn(UserScopeVariable.next.name()).anyTimes();
@@ -69,7 +69,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     EasyMock.expect(request.getContentType()).andReturn("application/x-www-form-urlencoded");
     EasyMock.expect(request.getSession()).andReturn(session).anyTimes();
     EasyMock.expect(session.getAttribute("testForm")).andReturn(null).anyTimes();
-    EasyMock.expect(request.getParameter(SharedScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
+    EasyMock.expect(request.getParameter(WF4JScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
     EasyMock.expect(request.getParameterMap()).andReturn(new HashMap()).anyTimes();
     EasyMock.expect(request.getParameterNames()).andReturn(new Vector().elements()).anyTimes();
     EasyMock.expect(request.getParameter(UserScopeVariable.choice.name())).andReturn(UserScopeVariable.jump.name()).anyTimes();    // replay
@@ -89,7 +89,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     EasyMock.expect(request.getContentType()).andReturn("application/x-www-form-urlencoded");
     EasyMock.expect(request.getSession()).andReturn(session).anyTimes();
     EasyMock.expect(session.getAttribute("testForm")).andReturn(null).anyTimes();
-    EasyMock.expect(request.getParameter(SharedScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
+    EasyMock.expect(request.getParameter(WF4JScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
     EasyMock.expect(request.getParameterMap()).andReturn(new HashMap()).anyTimes();
     EasyMock.expect(request.getParameterNames()).andReturn(new Vector().elements()).anyTimes();
     EasyMock.expect(request.getParameter(UserScopeVariable.choice.name())).andReturn(UserScopeVariable.back.name()).anyTimes();
@@ -110,7 +110,7 @@ public class AbstractWizardFormActionTest extends TestCase {
     EasyMock.expect(request.getContentType()).andReturn("application/x-www-form-urlencoded");
     EasyMock.expect(request.getSession()).andReturn(session).anyTimes();
     EasyMock.expect(session.getAttribute("testForm")).andReturn(null).anyTimes();
-    EasyMock.expect(request.getParameter(SharedScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
+    EasyMock.expect(request.getParameter(WF4JScopeVariable.page.name())).andReturn(String.valueOf(1)).anyTimes();
     EasyMock.expect(request.getParameterMap()).andReturn(new HashMap()).anyTimes();
     EasyMock.expect(request.getParameterNames()).andReturn(new Vector().elements()).anyTimes();
     EasyMock.expect(request.getParameter(UserScopeVariable.choice.name())).andReturn(UserScopeVariable.finish.name()).anyTimes();

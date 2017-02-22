@@ -380,31 +380,31 @@ public class Requests {
         Validate.notNull(errors);
 
         // Get the date range from the request
-        String paramStartDate = request.getParameter(SharedScopeVariable.date_start.name());
+        String paramStartDate = request.getParameter(WF4JScopeVariable.date_start.name());
         if (paramStartDate == null) {
             // look for start in session, but fall back on 30 days ago
-            Date sessionStartDate = WebUtil.getOrCreateSessionAttribute(request, SharedScopeVariable.date_start.name(), DateManager.rollDate(-30));
+            Date sessionStartDate = WebUtil.getOrCreateSessionAttribute(request, WF4JScopeVariable.date_start.name(), DateManager.rollDate(-30));
             dateStart.setTime(sessionStartDate.getTime());
         } else {
             try {
                 // Can we parse the start date?
                 dateStart.setTime(DateManager.humanStringToDate(paramStartDate).getTime());
                 dateStart = DateManager.setToStartOfDay(dateStart);
-                WebUtil.setSessionAttribute(request, SharedScopeVariable.date_start.name(), dateStart);
+                WebUtil.setSessionAttribute(request, WF4JScopeVariable.date_start.name(), dateStart);
 
                 // Is the start date "logical"? (See issue #2888)
                 if (DateManager.getField(dateStart, Calendar.YEAR) < 2000) {
-                    errors.put(SharedScopeVariable.date_start.name(), "Please enter a start date after January 1, 2000.");
+                    errors.put(WF4JScopeVariable.date_start.name(), "Please enter a start date after January 1, 2000.");
                 }
 
             } catch (ParseException pe) {
-                errors.put(SharedScopeVariable.date_start.name(), "The start date must be a valid date and in format MM/DD/YYYY.");
+                errors.put(WF4JScopeVariable.date_start.name(), "The start date must be a valid date and in format MM/DD/YYYY.");
             }
         }
-        String paramEndDate = request.getParameter(SharedScopeVariable.date_end.name());
+        String paramEndDate = request.getParameter(WF4JScopeVariable.date_end.name());
         if (paramEndDate == null) {
             // look for end in session, but fall back on today's date
-            Date sessionEndDate = WebUtil.getOrCreateSessionAttribute(request, SharedScopeVariable.date_end.name(), DateManager.today());
+            Date sessionEndDate = WebUtil.getOrCreateSessionAttribute(request, WF4JScopeVariable.date_end.name(), DateManager.today());
             dateEnd.setTime(sessionEndDate.getTime());
             dateEnd = DateManager.setToEndOfDay(dateEnd);
         } else {
@@ -413,21 +413,21 @@ public class Requests {
                 // that day)
                 dateEnd.setTime(DateManager.humanStringToEndDate(paramEndDate).getTime());
                 DateManager.setToEndOfDay(dateEnd);
-                WebUtil.setSessionAttribute(request, SharedScopeVariable.date_end.name(), dateEnd);
+                WebUtil.setSessionAttribute(request, WF4JScopeVariable.date_end.name(), dateEnd);
 
                 // Is the end date "logical"? (See issue #2888)
                 if (!dateEnd.before(DateManager.tomorrow())) {
-                    errors.put(SharedScopeVariable.date_end.name(), "Please enter a end date no later than today.");
+                    errors.put(WF4JScopeVariable.date_end.name(), "Please enter a end date no later than today.");
                 }
 
             } catch (ParseException pe) {
-                errors.put(SharedScopeVariable.date_end.name(), "The end date must be be a valid date and in format MM/DD/YYYY.");
+                errors.put(WF4JScopeVariable.date_end.name(), "The end date must be be a valid date and in format MM/DD/YYYY.");
             }
         }
 
         // Are the dates the right order?
         if (dateStart != null && dateEnd != null && dateStart.after(dateEnd)) {
-            errors.put(SharedScopeVariable.date_end.name(), "The start date can't be after the end date.");
+            errors.put(WF4JScopeVariable.date_end.name(), "The start date can't be after the end date.");
         }
 
         log.debug("Your report's final date range: " + DateManager.dateToString(dateStart) + " to " + DateManager.dateToString(dateEnd));

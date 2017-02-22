@@ -132,10 +132,8 @@ public abstract class AbstractAction implements WebExecutable {
         if (errors == null) {
             errors = new FormErrors();
         }
-
         // Add the error packet to the request for the signin page to pick up
-        request.setAttribute("errors", errors);
-
+        request.setAttribute(WF4JScopeVariable.error_list.name(), errors);
         // Build up the page with the same arguments as before
         String queryString = request.getQueryString();
         if (StringUtils.isNotBlank(queryString)) {
@@ -157,15 +155,12 @@ public abstract class AbstractAction implements WebExecutable {
      * @throws ServletException
      */
     protected void forwardToWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
-
         // If there's no error packet, create a new one
         if (errors == null) {
             errors = new FormErrors();
         }
-
         // Add the error packet to the request for the signin page to pick up
-        request.setAttribute("errors", errors);
-
+        request.setAttribute(WF4JScopeVariable.error_list.name(), errors);
         // Build up the page with the same arguments as before
         String queryString = request.getQueryString();
         if (StringUtils.isNotBlank(queryString)) {
