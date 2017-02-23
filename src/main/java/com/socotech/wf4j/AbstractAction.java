@@ -19,15 +19,6 @@ import org.slf4j.LoggerFactory;
  * it, override <code>mustBeSignedIn</code>. </p>
  */
 public abstract class AbstractAction implements WebExecutable {
-    /**
-     * <p/> Returns this action's short, alphanumeric name. The name is used to run the action in a server; for example, the URL <code>/controller/foobar</code> will run the action
-     * named "foobar". </p>
-     *
-     * @return The name of the action
-     */
-    public String getName() {
-        return name;
-    }
 
     /**
      * Invoked as alternative to redirecting user to a sign in page
