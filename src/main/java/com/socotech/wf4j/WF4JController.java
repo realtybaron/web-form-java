@@ -4,9 +4,7 @@ import java.io.IOException;
 import java.net.URL;
 import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -30,15 +28,14 @@ import org.slf4j.LoggerFactory;
 public class WF4JController extends HttpServlet {
     private Injector injector;
     private List<WebAction> actions;
-    private Map<Class, WebExecutable> actionMap;
 
     @Override
     public void init(ServletConfig config) throws ServletException {
         super.init(config);
+        // init members
         this.actions = Lists.newArrayList();
         this.injector = (Injector) config.getServletContext().getAttribute(Injector.class.getName());
-        this.actionMap = new ConcurrentHashMap<>();
-
+        // find annotations
         URL url = ClasspathHelper.forWebInfClasses(config.getServletContext());
         Reflections reflections = new Reflections(new ConfigurationBuilder().setUrls(url));
         Set<Class<?>> actionClasses = reflections.getTypesAnnotatedWith(WebActions.class);
@@ -58,18 +55,14 @@ public class WF4JController extends HttpServlet {
         String actionURL = Requests.getRequestUri(req);
         WebExecutable executable = null;
         // find web action
-        for (WebAction action : actions) {
+        for (WebAction action : this.actions) {
             UriPatternMatcher matcher = UriPatternType.get(UriPatternType.SERVLET, action.path());
             if (matcher != null && matcher.matches(actionURL)) {
-                executable = actionMap.get(action.type());
-                if (executable == null) {
-                    try {
-                        executable = (WebExecutable) injector.getInstance(action.type());
-                        actionMap.put(action.type(), executable);
-                        break;
-                    } catch (Exception e) {
-                        log.error(e.getMessage(), e);
-                    }
+                try {
+                    executable = (WebExecutable) injector.getInstance(action.type());
+                    break;
+                } catch (Exception e) {
+                    log.error(e.getMessage(), e);
                 }
             }
         }
