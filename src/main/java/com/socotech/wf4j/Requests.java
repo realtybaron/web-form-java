@@ -125,6 +125,19 @@ public class Requests {
     }
 
     /**
+     * Retrieve a String param from the request, but return default value if not found
+     *
+     * @param request       form request
+     * @param name          param name
+     * @param defaultValues default value
+     * @return value in request or default value provided by caller
+     */
+    public static String[] getStringParameters(HttpServletRequest request, String name, String[] defaultValues) {
+        String[] values = request.getParameterValues(name);
+        return values == null ? defaultValues : values;
+    }
+
+    /**
      * Retrieve a String param from the request, but throw exception if not found
      *
      * @param request form request
