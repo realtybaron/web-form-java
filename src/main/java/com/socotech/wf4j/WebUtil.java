@@ -339,6 +339,25 @@ public class WebUtil {
     }
 
     /**
+     * Set cookie
+     *
+     * @param response An HTTP response
+     * @param host     the host
+     * @param cookie   the cookie name
+     * @param value    the value you want it to have
+     * @param age      the maximum length of time for the cookie, in minutes
+     */
+    public static void setCookie(HttpServletResponse response, String host, String cookie, String value, int age) {
+        Cookie c = new Cookie(cookie, value);
+        c.setPath("/");
+        c.setMaxAge(age * 60);
+        if (!host.equals("localhost")) {
+            c.setDomain(host);
+        }
+        response.addCookie(c);
+    }
+
+    /**
      * Given an HTTP response, a cookie name, and an age, sets the cookie to the specified value and tells it to last for
      *
      * @param request    an HTTP servlet request
@@ -361,8 +380,8 @@ public class WebUtil {
     /**
      * Given an HTTP request and response, and the name of a cookie, removes that cookie.
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  form request
+     * @param response form response
      * @param cookie   name of cookie to be removed
      */
     public static void removeCookie(HttpServletRequest request, HttpServletResponse response, String cookie) {
