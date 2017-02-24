@@ -61,7 +61,7 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
                 rb.add(entry.getKey(), entry.getValue().toString());
             }
             // redirect to form view with params
-            this.redirectTo(request, response, rb.toString());
+            this.redirectTo(response, rb.toString());
         } else {
             // messages in the session? move from session to request scope.
             WebUtil.dumpMessagesToRequest(request);
@@ -184,7 +184,7 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
         if (view.startsWith("redirect:")) {
             // redirect to action; pull apart any params
             view = StringUtils.substringAfter(view, "redirect:");
-            this.redirectTo(req, res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
+            this.redirectTo(res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
         } else {
             String path = StringUtils.substringBefore(view, "?");
             if (path.endsWith(".jsp")) {
@@ -197,7 +197,7 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
                 this.render(req, res, view);
             } else {
                 // redirect to action
-                this.redirectTo(req, res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
+                this.redirectTo(res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
             }
         }
     }

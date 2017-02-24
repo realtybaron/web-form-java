@@ -43,7 +43,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
                 // force creation of a new session form object to avoid infinite redirects
                 this.getFormObject(request);
                 // redirect to first page of wizard
-                super.redirectTo(request, response, new RequestBuilder(request).toString());
+                super.redirectTo(response, new RequestBuilder(request).toString());
                 // indicate redirect in progress
                 return true;
             }
@@ -226,7 +226,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
                     rb.add(entry.getKey(), entry.getValue().toString());
                 }
                 // redirect to form view with params
-                this.redirectTo(request, response, rb.toString());
+                this.redirectTo(response, rb.toString());
             } else {
                 // hide form object property values in page
                 Set<Pair> formValues = this.getOffPageParameters(request, o, page);

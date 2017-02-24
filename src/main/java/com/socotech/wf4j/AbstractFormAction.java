@@ -59,7 +59,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Constructs a form object and, if specified, stores it in the session for later use
      *
-     * @param req form request
+     * @param req web request
      * @return form object
      * @throws Exception if object cannot be instantiated
      */
@@ -290,9 +290,9 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Does user meet privilege requirements?
      *
-     * @param request  wf4j request
-     * @param response wf4j response
-     * @param o        wf4j form
+     * @param request  web request
+     * @param response web response
+     * @param o        web form
      * @return true, if user meets privilege requirements
      */
     public boolean meetsPrivilegeRequirements(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
@@ -352,7 +352,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Determine if we should bind request parameters to a newly instantiated form object
      *
-     * @param req wf4j request
+     * @param req web request
      * @return true, if we should bind to new form object
      */
     protected boolean bindOnNewForm(HttpServletRequest req) {
@@ -362,7 +362,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Determine if we should handle binding and validation errors instead of returning to form view
      *
-     * @param request wf4j request
+     * @param request web request
      * @param o       form object
      * @param errors  error packet
      * @return true, if errors should be handled and avoid returning to form view
@@ -410,60 +410,63 @@ public abstract class AbstractFormAction extends AbstractAction {
      */
     @Override
     public final void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
-        FormErrors errors = new FormErrors();
-        try {
-            // Allow actions to abort the remainder
-            if (this.redirectRequest(req, res)) {
-                return;
-            }
-            Form form = this.getClass().getAnnotation(Form.class);
-            // get or create a new form
-            Object o = this.getFormObject(req);
-            // bind parameters to the form (optional)
-            if (!this.suppressBinding(req, o, errors)) {
-                // copy bean properties from request params
-                this.bindFormObject(req, o, errors);
-                // Allow actions to do their own work prior to form processing
-                if (this.onBind(req, res, o, errors)) {
-                    return;
-                }
-                // Check privileges
-                if (!this.meetsPrivilegeRequirements(req, res, o)) {
-                    this.handleUnauthorized(req, res);
-                }
-            }
-            if (this.isFormSubmission(req)) {
-                // validate the form (optional)
-                if (!this.suppressValidation(req, o, errors)) {
-                    this.validateFormObject(req, o, errors);
-                }
-                // allow for post-binding and post-validation processing
-                this.onBindAndValidate(req, o, errors);
-                // still no errors?
-                if (errors.isEmpty()) {
-                    // no errors, continue to execute
-                    this.handleFormSubmission(req, res, o, errors);
-                    // clean up after successful form submission
-                    if (form.sessionForm()) {
-                        WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
+        if (!this.redirectRequest(req, res)) {
+            FormErrors errors = new FormErrors();
+            try {
+                Form form = this.getClass().getAnnotation(Form.class);
+                // get or create a new form
+                Object o = this.getFormObject(req);
+                // bind parameters to the form (optional)
+                if (!this.suppressBinding(req, o, errors)) {
+                    // copy bean properties from request params
+                    this.bindFormObject(req, o, errors);
+                    // Allow actions to do their own work prior to form processing
+                    if (this.onBind(req, res, o, errors)) {
+                        return;
                     }
-                    return; // successful form submission...exit now!
-                } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
-                    this.onBindingAndValidationErrors(req, res, o, errors);
-                    return; // errors handled...exit now!
+                    // Check privileges
+                    if (!this.meetsPrivilegeRequirements(req, res, o)) {
+                        this.handleUnauthorized(req, res);
+                    }
                 }
+                if (this.isFormSubmission(req)) {
+                    // validate the form (optional)
+                    if (!this.suppressValidation(req, o, errors)) {
+                        this.validateFormObject(req, o, errors);
+                    }
+                    // allow for post-binding and post-validation processing
+                    this.onBindAndValidate(req, o, errors);
+                    // still no errors?
+                    if (errors.isEmpty()) {
+                        // no errors, continue to execute
+                        this.handleFormSubmission(req, res, o, errors);
+                        // clean up after successful form submission
+                        if (form.sessionForm()) {
+                            WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
+                        }
+                        return; // successful form submission...exit now!
+                    } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
+                        this.onBindingAndValidationErrors(req, res, o, errors);
+                        return; // errors handled...exit now!
+                    }
+                }
+                // either not a form submission or unhandled errors produced from binding and validation.  In any event, show the form.
+                this.showForm(req, res, o, errors);
+            } catch (Exception e) {
+                log.error(e.getMessage(), e);
+                this.raiseServerError(req, res, e.getMessage());
             }
-            // either not a form submission or unhandled errors produced from binding and validation.  In any event, show the form.
-            this.showForm(req, res, o, errors);
-        } catch (Exception e) {
-            log.error(e.getMessage(), e);
-            this.raiseServerError(req, res, e.getMessage());
         }
     }
 
     /**
      * Called early in the execute process.
-     * return true if you are redirecting the request outside of the process.
+     *
+     * @param request  web request
+     * @param response web response
+     * @return true, if you are redirecting the request outside of the process.
+     * @throws ServletException
+     * @throws IOException
      */
     protected boolean redirectRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return false;
@@ -472,7 +475,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Called only after a new form is instantiated and request parameters are bound to it.
      *
-     * @param request wf4j request
+     * @param request web request
      * @param o       form object
      * @param errors  error packet
      * @throws Exception bad stuff
@@ -484,8 +487,8 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Called after form is bound but before it is processed and displayed. return true if you want to bypass subsequent processing
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      * @param o        form object
      * @param errors   error packet
      * @return true, if further processing should be halted
@@ -499,7 +502,7 @@ public abstract class AbstractFormAction extends AbstractAction {
     /**
      * Called after form is bound to request parameters and validated.
      *
-     * @param request wf4j request
+     * @param request web request
      * @param o       form object
      * @param errors  error packet
      * @throws Exception bad stuff

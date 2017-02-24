@@ -81,30 +81,30 @@ public abstract class AbstractAction implements WebExecutable {
     /**
      * <p/> Redirects the user's browser to the specified page. This causes a new HTTP request, and the URL in the user's browser is changed. </p>
      *
-     * @param request  The HTTP request to service from the client
      * @param response The HTTP response for the server to write
      * @param page     The page to forward to
      * @throws IOException
      * @throws ServletException
      */
-    protected void redirectTo(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
+    protected boolean redirectTo(HttpServletResponse response, String page) throws IOException, ServletException {
         log.debug(this + " redirecting to " + page);
         response.sendRedirect(page);
+        return true;
     }
 
     /**
      * <p/> Redirects the user's browser to the specified page. This causes a new HTTP request, and the URL in the user's browser is changed. </p>
      *
-     * @param request  The HTTP request to service from the client
      * @param response The HTTP response for the server to write
      * @param page     The page to forward to
      * @throws IOException
      * @throws ServletException
      */
-    protected void redirectTo(HttpServletRequest request, HttpServletResponse response, String page, int status) throws IOException, ServletException {
+    protected boolean redirectTo(HttpServletResponse response, String page, int status) throws IOException, ServletException {
         log.debug(this + " redirecting to " + page);
         response.setStatus(status);
         response.sendRedirect(page);
+        return true;
     }
 
     /**
