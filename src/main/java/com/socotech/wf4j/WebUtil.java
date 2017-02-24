@@ -264,7 +264,7 @@ public class WebUtil {
     /**
      * Adds the string to the set of messages to display
      *
-     * @param req     wf4j request
+     * @param req     form request
      * @param message message to be added
      */
     @SuppressWarnings("unchecked")
@@ -276,7 +276,7 @@ public class WebUtil {
     /**
      * messages in the session? move from session to request scope.
      *
-     * @param req wf4j request
+     * @param req form request
      */
     public static void dumpErrorsToRequest(HttpServletRequest req) {
         String attrName = "errors";
@@ -289,7 +289,7 @@ public class WebUtil {
     /**
      * messages in the session? move from session to request scope.
      *
-     * @param req wf4j request
+     * @param req form request
      */
     public static void dumpMessagesToRequest(HttpServletRequest req) {
         String attrName = WF4JScopeVariable.message_list.name();

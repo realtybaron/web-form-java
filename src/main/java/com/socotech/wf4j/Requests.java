@@ -8,10 +8,7 @@ import java.net.URLDecoder;
 import java.text.ParseException;
 import java.util.Calendar;
 import java.util.Date;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.Validate;
@@ -38,7 +35,7 @@ public class Requests {
     /**
      * Return the "Referer" header in the request or an empty string if present.
      *
-     * @param request wf4j request
+     * @param request form request
      * @return referer or empty string
      */
     public static String getRefererHeader(HttpServletRequest request) {
@@ -117,7 +114,7 @@ public class Requests {
     /**
      * Retrieve a String param from the request, but return default value if not found
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -130,7 +127,7 @@ public class Requests {
     /**
      * Retrieve a String param from the request, but throw exception if not found
      *
-     * @param request wf4j request
+     * @param request form request
      * @param name    param name
      * @return value in request or default value provided by caller
      */
@@ -169,7 +166,7 @@ public class Requests {
     /**
      * Retrieve a required boolean param from the request, but throw exception if not found
      *
-     * @param request wf4j request
+     * @param request form request
      * @param name    param name
      * @return value in request
      */
@@ -182,7 +179,7 @@ public class Requests {
     /**
      * Retrieve a number param from the request, but return default value if not found
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -199,7 +196,7 @@ public class Requests {
     /**
      * Retrieve a required int attribute from the request, but throw exception if not found
      *
-     * @param request wf4j request
+     * @param request form request
      * @param name    param name
      * @return value in request
      */
@@ -212,7 +209,7 @@ public class Requests {
     /**
      * Retrieve a int param from the request, but return default value if not found
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -229,7 +226,7 @@ public class Requests {
     /**
      * Get int attribute from the request. but return default value if not found.
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -248,7 +245,7 @@ public class Requests {
     /**
      * Get int attribute from the request. but return default value if not found.
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -267,7 +264,7 @@ public class Requests {
     /**
      * Retrieve a required int attribute from the request, but throw exception if not found
      *
-     * @param request wf4j request
+     * @param request form request
      * @param name    param name
      * @return value in request
      */
@@ -280,7 +277,7 @@ public class Requests {
     /**
      * Retrieve a long param from the request, but return default value if not found
      *
-     * @param request      wf4j request
+     * @param request      form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -297,7 +294,7 @@ public class Requests {
     /**
      * Retrieve a long attribute from the request, but return default value if not found
      *
-     * @param req          wf4j request
+     * @param req          form request
      * @param name         param name
      * @param defaultValue default value
      * @return value in request or default value provided by caller
@@ -314,7 +311,7 @@ public class Requests {
     /**
      * Retrieve a required long param from the request, but throw exception if not found
      *
-     * @param request wf4j request
+     * @param request form request
      * @param name    param name
      * @return value in request
      */
@@ -322,34 +319,6 @@ public class Requests {
         String value = request.getParameter(name);
         Validate.notEmpty(value, "Required parameter not found in request: " + name);
         return Long.parseLong(value);
-    }
-
-    private static String getLoginToken(HttpServletRequest request) {
-        // What's the token we're looking for? Get it from the cookie. No cookie means not signed in.
-        Cookie c = WebUtil.getCookie(request, LOGIN_COOKIE);
-        if (c == null) {
-            return null;
-        } else {
-            return c.getValue();
-        }
-    }
-
-    /**
-     * If the user is logged in, reset the expiration so it doesn't run out
-     *
-     * @param request  wf4j request
-     * @param response wf4j response
-     */
-    public static void resetAuthTokenTimeout(HttpServletRequest request, HttpServletResponse response) {
-        // If the user is logged in, we have to reset the auth token so that it stays
-        // around for as long as the underlying session stays around. Otherwise, the
-        // auth token may expire too soon, or too late.
-        String token = getLoginToken(request);
-        if (token != null) {
-            HttpSession session = request.getSession();
-            int minutesToLive = session.getMaxInactiveInterval() / 60;
-            WebUtil.setCookie(request, response, LOGIN_COOKIE, token, minutesToLive);
-        }
     }
 
     /**
@@ -432,11 +401,6 @@ public class Requests {
 
         log.debug("Your report's final date range: " + DateManager.dateToString(dateStart) + " to " + DateManager.dateToString(dateEnd));
     }
-
-    /**
-     * Name of authentication cookie
-     */
-    public static final String LOGIN_COOKIE = "AUTHTOKEN";
 
     /**
      * <p/> A logging category for this class. </p>
