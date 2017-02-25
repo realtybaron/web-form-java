@@ -21,6 +21,7 @@ import com.google.common.collect.Sets;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.fileupload.FileItem;
+import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
@@ -124,7 +125,7 @@ public abstract class AbstractFormAction extends AbstractAction {
             }
         } else {
             // process as multi-part request
-            ServletFileUpload fu = new ServletFileUpload(new DiskFileItemFactory());
+            ServletFileUpload fu = new ServletFileUpload(this.getFileItemFactory());
             try {
                 List<FileItem> fitems = fu.parseRequest(request);
                 for (FileItem fitem : fitems) {
@@ -267,6 +268,15 @@ public abstract class AbstractFormAction extends AbstractAction {
                 }
             }
         }
+    }
+
+    /**
+     * Sub-classes can override to avoid writing to disk, i.e. Google Appengine
+     *
+     * @return file item factory
+     */
+    protected FileItemFactory getFileItemFactory() {
+        return new DiskFileItemFactory();
     }
 
     /**
