@@ -23,8 +23,8 @@ public abstract class AbstractAction implements WebExecutable {
     /**
      * Invoked as alternative to redirecting user to a sign in page
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      */
     public void handleUnauthorized(HttpServletRequest request, HttpServletResponse response) throws IOException, ServletException {
         request.getRequestDispatcher("access-denied.jsp").forward(request, response);
@@ -33,8 +33,8 @@ public abstract class AbstractAction implements WebExecutable {
     /**
      * Determine if request is an include or an already committed response.  Otherwise, forward to the page.
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      * @param page     target page
      * @throws IOException
      * @throws ServletException
@@ -53,8 +53,8 @@ public abstract class AbstractAction implements WebExecutable {
     /**
      * Include page in the response.
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      * @param page     target page
      * @throws IOException
      * @throws ServletException

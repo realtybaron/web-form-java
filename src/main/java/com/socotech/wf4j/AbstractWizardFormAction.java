@@ -241,16 +241,6 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
         }
     }
 
-
-    /**
-     * Determines if user should be required to sign in before submitting this page's form.
-     *
-     * @param request HTTP request
-     * @param page    current page
-     * @return true, if user is required to be signed-in
-     */
-    protected abstract boolean mustBeSignedIn(HttpServletRequest request, int page);
-
     /**
      * Load supporting data into request scope before directing user to form view.  This method must be overridden by subclasses.  By default, this method returns an empty map.
      *
