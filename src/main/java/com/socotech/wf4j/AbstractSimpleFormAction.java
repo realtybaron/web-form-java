@@ -174,8 +174,8 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
     /**
      * Form has been processed. Now, show the success view for the action.
      *
-     * @param req  wf4j request
-     * @param res  wf4j response
+     * @param req  web request
+     * @param res  web response
      * @param view success view
      * @throws IOException      general I/O problems
      * @throws ServletException general HTTP problems
@@ -200,9 +200,10 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
             } else if (path.endsWith(".jspf")) {
                 // render view
                 this.render(req, res, view);
+            } else if (req.getMethod().equalsIgnoreCase("post")) {
+                this.redirectTo(res, view, HttpServletResponse.SC_SEE_OTHER);
             } else {
-                // redirect to action
-                this.redirectTo(res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
+                this.redirectTo(res, view, HttpServletResponse.SC_MOVED_TEMPORARILY);
             }
         }
     }
@@ -210,8 +211,8 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
     /**
      * Handle a simple form submission
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      * @param o        form object
      * @param errors   error packet
      * @throws Exception bad things
