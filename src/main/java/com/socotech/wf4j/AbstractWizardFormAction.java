@@ -26,7 +26,10 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractWizardFormAction extends AbstractFormAction {
 
-    AbstractWizardFormAction() {
+    /**
+     * Default constructor
+     */
+    protected AbstractWizardFormAction() {
         // validate form type
         Form form = this.getClass().getAnnotation(Form.class);
         Preconditions.checkState(WizardForm.class.isAssignableFrom(form.formClass()), "form class must implement WizardForm interface");
