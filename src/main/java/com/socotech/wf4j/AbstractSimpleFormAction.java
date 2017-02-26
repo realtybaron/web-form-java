@@ -182,9 +182,14 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
      */
     private void showView(HttpServletRequest req, HttpServletResponse res, String view) throws IOException, ServletException {
         if (view.startsWith("redirect:")) {
-            // redirect to action; pull apart any params
-            view = StringUtils.substringAfter(view, "redirect:");
-            this.redirectTo(res, view, req.getMethod().equalsIgnoreCase("post") ? HttpServletResponse.SC_SEE_OTHER : HttpServletResponse.SC_MOVED_TEMPORARILY);
+            // extract path
+            view = StringUtils.substringAfter(view, "redirect:").trim();
+            // redirect to action
+            if (req.getMethod().equalsIgnoreCase("post")) {
+                this.redirectTo(res, view, HttpServletResponse.SC_SEE_OTHER);
+            } else {
+                this.redirectTo(res, view, HttpServletResponse.SC_MOVED_TEMPORARILY);
+            }
         } else {
             String path = StringUtils.substringBefore(view, "?");
             if (path.endsWith(".jsp")) {
