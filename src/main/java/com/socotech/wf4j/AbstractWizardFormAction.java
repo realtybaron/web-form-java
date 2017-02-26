@@ -178,14 +178,14 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * After binding, validate the form object
      *
      * @param request HTTP request
-     * @param command form object
-     * @param o       error packet
+     * @param o       form object
+     * @param errors  error packet
      * @throws InstantiationException if the validator instance cannot be instantiated
      * @throws IllegalAccessException if something else bad happens
      */
     @Override
-    protected final void validateFormObject(HttpServletRequest request, Object command, FormErrors o) throws Exception {
-        this.validatePage(request, command, o, WizardForm.class.cast(o).getPage());
+    protected final void validateFormObject(HttpServletRequest request, Object o, FormErrors errors) throws Exception {
+        this.validatePage(request, o, errors, WizardForm.class.cast(o).getPage());
     }
 
     /**
@@ -359,11 +359,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving backward in the wizard
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if moving backward
      */
-    protected boolean isBackSubmission(HttpServletRequest request, Object form) {
-        String choice = WizardForm.class.cast(form).getChoice();
+    protected boolean isBackSubmission(HttpServletRequest request, Object o) {
+        String choice = WizardForm.class.cast(o).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.back.name());
     }
 
@@ -371,11 +371,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving backward in the wizard
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if moving backward
      */
-    protected boolean isCancelSubmission(HttpServletRequest request, Object form) {
-        String choice = WizardForm.class.cast(form).getChoice();
+    protected boolean isCancelSubmission(HttpServletRequest request, Object o) {
+        String choice = WizardForm.class.cast(o).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.cancel.name());
     }
 
@@ -383,11 +383,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving forward in the wizard
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if moving forward
      */
-    protected boolean isNextSubmission(HttpServletRequest request, Object form) {
-        String choice = WizardForm.class.cast(form).getChoice();
+    protected boolean isNextSubmission(HttpServletRequest request, Object o) {
+        String choice = WizardForm.class.cast(o).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.next.name());
     }
 
@@ -395,11 +395,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether user is jumping to a specific page in the wizard
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if jumping pages
      */
-    protected boolean isJumpSubmission(HttpServletRequest request, Object form) {
-        String choice = WizardForm.class.cast(form).getChoice();
+    protected boolean isJumpSubmission(HttpServletRequest request, Object o) {
+        String choice = WizardForm.class.cast(o).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.jump.name());
     }
 
@@ -407,23 +407,23 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether user is leaving the wizard without finishing it.
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if leaving wizard without finishing it
      */
-    protected boolean isExitSubmission(HttpServletRequest request, Object form) {
-        int pageNumber = WizardForm.class.cast(form).getPage();
-        return pageNumber == 0 && this.isBackSubmission(request, form);
+    protected boolean isExitSubmission(HttpServletRequest request, Object o) {
+        int pageNumber = WizardForm.class.cast(o).getPage();
+        return pageNumber == 0 && this.isBackSubmission(request, o);
     }
 
     /**
      * Determines whether user is moving forward in the wizard
      *
      * @param request incoming HTTP request
-     * @param form    web form
+     * @param o       form object
      * @return true, if moving forward
      */
-    protected boolean isFinishSubmission(HttpServletRequest request, Object form) {
-        String choice = WizardForm.class.cast(form).getChoice();
+    protected boolean isFinishSubmission(HttpServletRequest request, Object o) {
+        String choice = WizardForm.class.cast(o).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.finish.name());
     }
 
