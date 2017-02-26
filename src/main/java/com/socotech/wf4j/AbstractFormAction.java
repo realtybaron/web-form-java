@@ -95,9 +95,10 @@ public abstract class AbstractFormAction extends AbstractAction {
      * If the request method is "POST", a form submission is assumed.  Sub-classes can override this to use request params.
      *
      * @param request HTTP request
+     * @param o
      * @return true, if form submission is detected
      */
-    protected boolean isFormSubmission(HttpServletRequest request) {
+    protected boolean isFormSubmission(HttpServletRequest request, Object o) {
         return "POST".equalsIgnoreCase(request.getMethod());
     }
 
@@ -439,7 +440,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                         this.handleUnauthorized(req, res);
                     }
                 }
-                if (this.isFormSubmission(req)) {
+                if (this.isFormSubmission(req, o)) {
                     // validate the form (optional)
                     if (!this.suppressValidation(req, o, errors)) {
                         this.validateFormObject(req, o, errors);

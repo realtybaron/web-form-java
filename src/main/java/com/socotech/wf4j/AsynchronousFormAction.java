@@ -37,10 +37,11 @@ public abstract class AsynchronousFormAction extends AbstractFormAction {
      * Returns 'true' because there is no form or success view
      *
      * @param request HTTP request
+     * @param o       form object
      * @return true
      */
     @Override
-    protected boolean isFormSubmission(HttpServletRequest request) {
+    protected boolean isFormSubmission(HttpServletRequest request, Object o) {
         return true;
     }
 

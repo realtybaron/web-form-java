@@ -120,11 +120,12 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * If the request method is "POST", a form submission is assumed.  Sub-classes can override this to use request params.
      *
      * @param request HTTP request
+     * @param o       form object
      * @return true, if form submission is detected
      */
     @Override
-    protected boolean isFormSubmission(HttpServletRequest request) {
-        return Requests.getStringParameter(request, UserScopeVariable.choice.name(), null) != null;
+    protected boolean isFormSubmission(HttpServletRequest request, Object o) {
+        return WizardForm.class.cast(o).getChoice() != null;
     }
 
     /**
