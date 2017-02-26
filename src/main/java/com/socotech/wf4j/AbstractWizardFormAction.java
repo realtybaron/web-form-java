@@ -8,6 +8,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.google.common.base.Preconditions;
 import org.apache.commons.lang.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -25,11 +26,17 @@ import org.slf4j.LoggerFactory;
  */
 public abstract class AbstractWizardFormAction extends AbstractFormAction {
 
+    AbstractWizardFormAction() {
+        // validate form type
+        Form form = this.getClass().getAnnotation(Form.class);
+        Preconditions.checkState(WizardForm.class.isAssignableFrom(form.formClass()), "form class must implement WizardForm interface");
+    }
+
     /**
      * If form is session scoped, but not found in the user's session, redirect to the beginning of the wizard.
      *
-     * @param request  wf4j request
-     * @param response wf4j response
+     * @param request  web request
+     * @param response web response
      * @return true, if user should be redirected to beginning of wizard
      * @throws ServletException
      * @throws IOException
@@ -68,26 +75,26 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     protected final void handleFormSubmission(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws IOException, ServletException {
         try {
             // find current page
-            int page = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
+            int page = WizardForm.class.cast(o).getPage();
             // back, forward, existing, or finishing?
-            if (this.isExitSubmission(request)) {
+            if (this.isExitSubmission(request, o)) {
                 // exit from wizard
                 this.exit(o, request, response);
-            } else if (this.isJumpSubmission(request)) {
+            } else if (this.isJumpSubmission(request, o)) {
                 // show form of target page
                 this.showPage(request, response, o, errors, page);
-            } else if (this.isBackSubmission(request)) {
+            } else if (this.isBackSubmission(request, o)) {
                 // show form of previous page
                 this.showPage(request, response, o, errors, --page);
-            } else if (this.isCancelSubmission(request)) {
+            } else if (this.isCancelSubmission(request, o)) {
                 // cancel out of wizard
                 this.cancel(o, request, response);
-            } else if (this.isNextSubmission(request)) {
+            } else if (this.isNextSubmission(request, o)) {
                 // no errors, process current page
                 this.executePage(request, response, o, page);
                 // show form of next page
                 this.showPage(request, response, o, errors, ++page);
-            } else if (this.isFinishSubmission(request)) {
+            } else if (this.isFinishSubmission(request, o)) {
                 // fully validate the form one last time
                 this.validateFormObject(request, o, errors);
                 if (errors.isEmpty()) {
@@ -131,7 +138,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     @Override
     protected boolean suppressBinding(HttpServletRequest request, Object o, FormErrors errors) {
         Form form = this.getClass().getAnnotation(Form.class);
-        return form.sessionForm() && this.isBackSubmission(request);
+        return form.sessionForm() && this.isBackSubmission(request, o);
     }
 
     /**
@@ -144,7 +151,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected boolean suppressValidation(HttpServletRequest request, Object o, FormErrors errors) {
-        return this.isBackSubmission(request);
+        return this.isBackSubmission(request, o);
     }
 
     /**
@@ -158,7 +165,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final boolean onBind(HttpServletRequest req, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
-        int pageNumber = Requests.getIntParameter(req, WF4JScopeVariable.page.name(), -1);
+        int pageNumber = WizardForm.class.cast(o).getPage();
         this.onBind(req, o, errors, pageNumber);
         return false;
     }
@@ -174,8 +181,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final void validateFormObject(HttpServletRequest request, Object command, FormErrors o) throws Exception {
-        int pageNumber = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
-        this.validatePage(request, command, o, pageNumber);
+        this.validatePage(request, command, o, WizardForm.class.cast(o).getPage());
     }
 
     /**
@@ -189,8 +195,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      */
     @Override
     protected final void showForm(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
-        int page = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
-        this.showPage(request, response, o, errors, page);
+        this.showPage(request, response, o, errors, WizardForm.class.cast(o).getPage());
     }
 
     /**
@@ -258,7 +263,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Extract form object properties that are "off page" for use as hidden parameters in the target page. "Off page" means they are visible to the user on either previous or
      * subsequent pages, but not on the target page.
      *
-     * @param req  wf4j request
+     * @param req  web request
      * @param o    form object
      * @param page current page
      * @return set of request params to be hidden inside page
@@ -340,7 +345,7 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     /**
      * Return the document location of the specified page
      *
-     * @param request wf4j request
+     * @param request web request
      * @param page    page index
      * @return document location
      */
@@ -350,10 +355,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving backward in the wizard
      *
      * @param request incoming HTTP request
+     * @param form    web form
      * @return true, if moving backward
      */
-    protected boolean isBackSubmission(HttpServletRequest request) {
-        String choice = Requests.getStringParameter(request, UserScopeVariable.choice.name(), "");
+    protected boolean isBackSubmission(HttpServletRequest request, Object form) {
+        String choice = WizardForm.class.cast(form).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.back.name());
     }
 
@@ -361,10 +367,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving backward in the wizard
      *
      * @param request incoming HTTP request
+     * @param form    web form
      * @return true, if moving backward
      */
-    protected boolean isCancelSubmission(HttpServletRequest request) {
-        String choice = Requests.getStringParameter(request, UserScopeVariable.choice.name(), "");
+    protected boolean isCancelSubmission(HttpServletRequest request, Object form) {
+        String choice = WizardForm.class.cast(form).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.cancel.name());
     }
 
@@ -372,10 +379,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether use is moving forward in the wizard
      *
      * @param request incoming HTTP request
-     * @return true, if moving foward
+     * @param form    web form
+     * @return true, if moving forward
      */
-    protected boolean isNextSubmission(HttpServletRequest request) {
-        String choice = Requests.getStringParameter(request, UserScopeVariable.choice.name(), "");
+    protected boolean isNextSubmission(HttpServletRequest request, Object form) {
+        String choice = WizardForm.class.cast(form).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.next.name());
     }
 
@@ -383,10 +391,11 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether user is jumping to a specific page in the wizard
      *
      * @param request incoming HTTP request
+     * @param form    web form
      * @return true, if jumping pages
      */
-    protected boolean isJumpSubmission(HttpServletRequest request) {
-        String choice = Requests.getStringParameter(request, UserScopeVariable.choice.name(), "");
+    protected boolean isJumpSubmission(HttpServletRequest request, Object form) {
+        String choice = WizardForm.class.cast(form).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.jump.name());
     }
 
@@ -394,21 +403,23 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * Determines whether user is leaving the wizard without finishing it.
      *
      * @param request incoming HTTP request
+     * @param form    web form
      * @return true, if leaving wizard without finishing it
      */
-    protected boolean isExitSubmission(HttpServletRequest request) {
-        int pageNumber = Requests.getIntParameter(request, WF4JScopeVariable.page.name(), 0);
-        return pageNumber == 0 && this.isBackSubmission(request);
+    protected boolean isExitSubmission(HttpServletRequest request, Object form) {
+        int pageNumber = WizardForm.class.cast(form).getPage();
+        return pageNumber == 0 && this.isBackSubmission(request, form);
     }
 
     /**
      * Determines whether user is moving forward in the wizard
      *
      * @param request incoming HTTP request
-     * @return true, if moving foward
+     * @param form    web form
+     * @return true, if moving forward
      */
-    protected boolean isFinishSubmission(HttpServletRequest request) {
-        String choice = Requests.getStringParameter(request, UserScopeVariable.choice.name(), "");
+    protected boolean isFinishSubmission(HttpServletRequest request, Object form) {
+        String choice = WizardForm.class.cast(form).getChoice();
         return StringUtils.equals(choice, UserScopeVariable.finish.name());
     }
 

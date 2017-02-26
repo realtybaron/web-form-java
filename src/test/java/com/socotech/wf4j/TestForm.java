@@ -5,13 +5,13 @@ import java.util.Date;
 /**
  * User: marc Date: Jan 22, 2010 Time: 5:18:30 PM
  */
-public final class TestForm {
+public class TestForm {
     private int integer;
-    private double doubl;
-    private boolean bool;
     private Date date;
     private Long longs;
+    private double doubl;
     private String string;
+    private boolean bool;
     private String[] array;
 
     public boolean isBool() {

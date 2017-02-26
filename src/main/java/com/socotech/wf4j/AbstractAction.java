@@ -200,7 +200,6 @@ public abstract class AbstractAction implements WebExecutable {
      * @throws IOException
      */
     protected void raiseServerError(HttpServletRequest request, HttpServletResponse response, String why) throws IOException {
-
         String errorMsg = "Server Error Raised: " + why;
         log.error(errorMsg);
         request.setAttribute("message", why);
