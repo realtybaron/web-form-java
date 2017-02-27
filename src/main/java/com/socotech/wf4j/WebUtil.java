@@ -345,12 +345,12 @@ public class WebUtil {
      * @param host     the host
      * @param cookie   the cookie name
      * @param value    the value you want it to have
-     * @param age      the maximum length of time for the cookie, in minutes
+     * @param age      the maximum length of time for the cookie, in seconds
      */
     public static void setCookie(HttpServletResponse response, String host, String cookie, String value, int age) {
         Cookie c = new Cookie(cookie, value);
         c.setPath("/");
-        c.setMaxAge(age * 60);
+        c.setMaxAge(age);
         if (!host.equals("localhost")) {
             c.setDomain(host);
         }
@@ -360,16 +360,16 @@ public class WebUtil {
     /**
      * Given an HTTP response, a cookie name, and an age, sets the cookie to the specified value and tells it to last for
      *
-     * @param request    an HTTP servlet request
-     * @param response   An HTTP response
-     * @param cookie     the cookie name
-     * @param value      the value you want it to have
-     * @param ageMinutes the maximum length of time for the cookie, in minutes
+     * @param request  an HTTP servlet request
+     * @param response An HTTP response
+     * @param cookie   the cookie name
+     * @param value    the value you want it to have
+     * @param age      the maximum length of time for the cookie, in seconds
      */
-    public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookie, String value, int ageMinutes) {
+    public static void setCookie(HttpServletRequest request, HttpServletResponse response, String cookie, String value, int age) {
         Cookie c = new Cookie(cookie, value);
         c.setPath("/");
-        c.setMaxAge(ageMinutes * 60);
+        c.setMaxAge(age);
         String host = StringUtils.substringBeforeLast(request.getHeader("host"), ":");
         if (!host.equals("localhost")) {
             c.setDomain(host);
