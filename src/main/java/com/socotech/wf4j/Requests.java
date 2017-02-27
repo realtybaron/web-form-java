@@ -335,6 +335,36 @@ public class Requests {
     }
 
     /**
+     * Retrieve a float attribute from the request, but return default value if not found
+     *
+     * @param req          form request
+     * @param name         param name
+     * @param defaultValue default value
+     * @return value in request or default value provided by caller
+     */
+    public static Float getFloatAttribute(HttpServletRequest req, String name, Float defaultValue) {
+        Object value = req.getAttribute(name);
+        if (value == null) {
+            return defaultValue;
+        } else {
+            return Float.parseFloat(value.toString());
+        }
+    }
+
+    /**
+     * Retrieve a required float param from the request, but throw exception if not found
+     *
+     * @param request form request
+     * @param name    param name
+     * @return value in request
+     */
+    public static Float getRequiredFloatParameter(HttpServletRequest request, String name) {
+        String value = request.getParameter(name);
+        Validate.notEmpty(value, "Required parameter not found in request: " + name);
+        return Float.parseFloat(value);
+    }
+
+    /**
      * <p/> Helper function for various report queries: initialize the start and end dates to one month ago and today,
      * respectively. </p>
      *
