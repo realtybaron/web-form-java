@@ -2,6 +2,7 @@ package com.socotech.wf4j;
 
 import java.beans.PropertyEditorSupport;
 import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import org.apache.commons.lang.StringUtils;
@@ -33,11 +34,18 @@ public class DatePropertyEditor extends PropertyEditorSupport {
         if (this.allowEmpty && StringUtils.isEmpty(text)) {
             super.setValue(null);
         } else {
-            try {
-                super.setValue(DateManager.humanStringToDate(text));
-            } catch (ParseException e) {
-                throw new IllegalArgumentException("Invalid format: " + text);
+            for (String pattern : patterns) {
+                try {
+                    super.setValue(new SimpleDateFormat(pattern).parse(text));
+                    return;
+                } catch (ParseException e) {
+                    // keep trying
+                }
             }
+            // give up
+            throw new IllegalArgumentException("Invalid format: " + text);
         }
     }
+
+    private static String[] patterns = {"MM/yy", "MM/yyyy", "MM/dd/yyyy"};
 }
