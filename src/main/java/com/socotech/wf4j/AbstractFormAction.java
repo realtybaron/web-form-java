@@ -95,7 +95,7 @@ public abstract class AbstractFormAction extends AbstractAction {
      * If the request method is "POST", a form submission is assumed.  Sub-classes can override this to use request params.
      *
      * @param request HTTP request
-     * @param o
+     * @param o       form object
      * @return true, if form submission is detected
      */
     protected boolean isFormSubmission(HttpServletRequest request, Object o) {
@@ -336,19 +336,6 @@ public abstract class AbstractFormAction extends AbstractAction {
     }
 
     /**
-     * Determine whether binding should be skipped.  Default is false.  Sub-classes should override to customize behavior.
-     *
-     * @param request HTTP request
-     * @param o       form object
-     * @param errors  error packet
-     * @return true, if binding should be skipped
-     */
-
-    protected boolean suppressBinding(HttpServletRequest request, Object o, FormErrors errors) {
-        return false;
-    }
-
-    /**
      * Determine whether validation should be skipped.  Default is false.  Sub-classes should override to customize behavior.
      *
      * @param request HTTP request
@@ -427,42 +414,38 @@ public abstract class AbstractFormAction extends AbstractAction {
                 Form form = this.getClass().getAnnotation(Form.class);
                 // get or create a new form
                 Object o = this.getFormObject(req);
-                // bind parameters to the form (optional)
-                if (!this.suppressBinding(req, o, errors)) {
-                    // copy bean properties from request params
-                    this.bindFormObject(req, o, errors);
-                    // Allow actions to do their own work prior to form processing
-                    if (this.onBind(req, res, o, errors)) {
-                        return;
-                    }
+                // copy bean properties from request params
+                this.bindFormObject(req, o, errors);
+                // Allow actions to do their own work prior to form processing
+                if (!this.onBind(req, res, o, errors)) {
                     // Check privileges
                     if (!this.meetsPrivilegeRequirements(req, res, o)) {
                         this.handleUnauthorized(req, res);
                     }
-                }
-                if (this.isFormSubmission(req, o)) {
-                    // validate the form (optional)
-                    if (!this.suppressValidation(req, o, errors)) {
-                        this.validateFormObject(req, o, errors);
-                    }
-                    // allow for post-binding and post-validation processing
-                    this.onBindAndValidate(req, o, errors);
-                    // still no errors?
-                    if (errors.isEmpty()) {
-                        // no errors, continue to execute
-                        this.handleFormSubmission(req, res, o, errors);
-                        // clean up after successful form submission
-                        if (!form.sessionForm()) {
-                            WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
+                    if (this.isFormSubmission(req, o)) {
+                        // validate the form (optional)
+                        if (!this.suppressValidation(req, o, errors)) {
+                            this.validateFormObject(req, o, errors);
                         }
-                        return; // successful form submission...exit now!
-                    } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
-                        this.onBindingAndValidationErrors(req, res, o, errors);
-                        return; // errors handled...exit now!
+                        // allow for post-binding and post-validation processing
+                        this.onBindAndValidate(req, o, errors);
+                        // still no errors?
+                        if (errors.isEmpty()) {
+                            // no errors, continue to execute
+                            this.handleFormSubmission(req, res, o, errors);
+                            // clean up after successful form submission
+                            if (!form.sessionForm()) {
+                                WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
+                            }
+                            return; // successful form submission...exit now!
+                        } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
+                            this.onBindingAndValidationErrors(req, res, o, errors);
+                            return; // errors handled...exit now!
+                        }
                     }
+                    // either not a form submission or unhandled errors produced from binding and validation.  In any event, show the form.
+                    this.showForm(req, res, o, errors);
                 }
-                // either not a form submission or unhandled errors produced from binding and validation.  In any event, show the form.
-                this.showForm(req, res, o, errors);
             } catch (Exception e) {
                 log.error(e.getMessage(), e);
                 this.raiseServerError(req, res, e.getMessage());

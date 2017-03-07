@@ -132,20 +132,6 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
     }
 
     /**
-     * Skip binding if moving backwards in the page flow
-     *
-     * @param request HTTP request
-     * @param o       form object
-     * @param errors  error packet
-     * @return true, if moving backwards
-     */
-    @Override
-    protected boolean suppressBinding(HttpServletRequest request, Object o, FormErrors errors) {
-        Form form = this.getClass().getAnnotation(Form.class);
-        return form.sessionForm() && this.isBackSubmission(request, o);
-    }
-
-    /**
      * Skip validation if moving backwards in the page flow
      *
      * @param request HTTP request
