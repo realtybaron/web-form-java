@@ -452,7 +452,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                         // no errors, continue to execute
                         this.handleFormSubmission(req, res, o, errors);
                         // clean up after successful form submission
-                        if (form.sessionForm()) {
+                        if (!form.sessionForm()) {
                             WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
                         }
                         return; // successful form submission...exit now!
