@@ -1,6 +1,3 @@
-/*
- * AbstractAction
- */
 package com.socotech.wf4j;
 
 import java.io.IOException;
@@ -36,8 +33,8 @@ public abstract class AbstractAction implements WebExecutable {
      * @param request  web request
      * @param response web response
      * @param page     target page
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected void render(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
         RequestDispatcher rd = request.getRequestDispatcher(page);
@@ -56,8 +53,8 @@ public abstract class AbstractAction implements WebExecutable {
      * @param request  web request
      * @param response web response
      * @param page     target page
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected void includeIn(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
         request.getRequestDispatcher(page).include(request, response);
@@ -70,8 +67,8 @@ public abstract class AbstractAction implements WebExecutable {
      * @param request  The HTTP request to service from the client
      * @param response The HTTP response for the server to write
      * @param page     The page to forward to
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected void forwardTo(HttpServletRequest request, HttpServletResponse response, String page) throws IOException, ServletException {
         log.debug(this + " forwarding to " + page);
@@ -83,8 +80,8 @@ public abstract class AbstractAction implements WebExecutable {
      *
      * @param response The HTTP response for the server to write
      * @param page     The page to forward to
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected boolean redirectTo(HttpServletResponse response, String page) throws IOException, ServletException {
         log.debug(this + " redirecting to " + page);
@@ -97,8 +94,8 @@ public abstract class AbstractAction implements WebExecutable {
      *
      * @param response The HTTP response for the server to write
      * @param page     The page to forward to
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected boolean redirectTo(HttpServletResponse response, String page, int status) throws IOException, ServletException {
         log.debug(this + " redirecting to " + page);
@@ -115,8 +112,8 @@ public abstract class AbstractAction implements WebExecutable {
      * @param response The HTTP response for the server to write
      * @param page     The page to send the user back to
      * @param errors   The error packet with codes and descriptions
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected void renderWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
         // If there's no error packet, create a new one
@@ -142,8 +139,8 @@ public abstract class AbstractAction implements WebExecutable {
      * @param response The HTTP response for the server to write
      * @param page     The page to send the user back to
      * @param errors   The error packet with codes and descriptions
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     protected void forwardToWithErrors(HttpServletRequest request, HttpServletResponse response, String page, FormErrors errors) throws IOException, ServletException {
         // If there's no error packet, create a new one
@@ -170,7 +167,7 @@ public abstract class AbstractAction implements WebExecutable {
      * @param response The response being sent to
      * @param why      A friendly string to display to the user
      * @param except   If not null, the exception that caused the problem.
-     * @throws IOException
+     * @throws IOException i/o error
      */
     protected void raiseServerError(HttpServletRequest request, HttpServletResponse response, String why, Exception except) throws IOException {
 
@@ -197,7 +194,7 @@ public abstract class AbstractAction implements WebExecutable {
      * @param request  The request being processed
      * @param response The response being sent to
      * @param why      A friendly string to display to the user
-     * @throws IOException
+     * @throws IOException i/o error
      */
     protected void raiseServerError(HttpServletRequest request, HttpServletResponse response, String why) throws IOException {
         String errorMsg = "Server Error Raised: " + why;

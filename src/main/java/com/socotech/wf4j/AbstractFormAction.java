@@ -403,8 +403,8 @@ public abstract class AbstractFormAction extends AbstractAction {
      *
      * @param req incoming HTTP request
      * @param res incoming HTTP response
-     * @throws IOException
-     * @throws ServletException
+     * @throws IOException      i/o error
+     * @throws ServletException servlet error
      */
     @Override
     public final void execute(HttpServletRequest req, HttpServletResponse res) throws IOException, ServletException {
@@ -459,8 +459,8 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @param request  web request
      * @param response web response
      * @return true, if you are redirecting the request outside of the process.
-     * @throws ServletException
-     * @throws IOException
+     * @throws IOException i/o error
+     * @throws ServletException servlet exception
      */
     protected boolean redirectRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return false;

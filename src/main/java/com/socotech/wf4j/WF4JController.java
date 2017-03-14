@@ -52,12 +52,12 @@ public class WF4JController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         // init vars
-        String actionURL = Requests.getRequestUri(req);
-        WebExecutable executable = null;
+        String url = Requests.getRequestUri(req);
         // find web action
+        WebExecutable executable = null;
         for (WebAction action : this.actions) {
             UriPatternMatcher matcher = UriPatternType.get(UriPatternType.SERVLET, action.path());
-            if (matcher != null && matcher.matches(actionURL)) {
+            if (matcher != null && matcher.matches(url)) {
                 try {
                     executable = (WebExecutable) injector.getInstance(action.type());
                     break;
