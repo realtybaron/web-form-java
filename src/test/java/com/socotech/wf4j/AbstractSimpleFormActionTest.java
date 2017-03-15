@@ -127,7 +127,7 @@ public class AbstractSimpleFormActionTest {
         }
 
         @Override
-        protected void doSubmit(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+        protected void doPost(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
             // noop
         }
 

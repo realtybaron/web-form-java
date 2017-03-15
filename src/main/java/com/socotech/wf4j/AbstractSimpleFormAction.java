@@ -1,7 +1,3 @@
-/**
- * AbstractSimpleFormAction.java
- */
-
 package com.socotech.wf4j;
 
 import java.io.IOException;
@@ -88,14 +84,16 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
         try {
             if (!this.isTokenizedForm(request) || this.isTokenValid(request, o)) {
                 // handle valid submission
-                this.doSubmit(request, response, o, errors);
+                if ("put".equalsIgnoreCase(request.getMethod())) {
+                    this.doPut(request, response, o, errors);
+                } else if ("post".equalsIgnoreCase(request.getMethod())) {
+                    this.doPost(request, response, o, errors);
+                }
                 // check for form submission errors
                 if (errors.isEmpty()) {
                     // add form object to request scope making it available in success view
                     Form form = this.getClass().getAnnotation(Form.class);
                     request.setAttribute(form.name(), o);
-                    // Prepare for view
-                    this.prepareSuccessView(request, o);
                     // Figure out where we're supposed to go to next
                     String view = this.getSuccessView(request, o);
                     // go to the success view
@@ -185,7 +183,7 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
             // extract path
             view = StringUtils.substringAfter(view, "redirect:").trim();
             // redirect to action
-            if (req.getMethod().equalsIgnoreCase("post")) {
+            if (req.getMethod().equalsIgnoreCase("put") || req.getMethod().equalsIgnoreCase("post")) {
                 this.redirectTo(res, view, HttpServletResponse.SC_SEE_OTHER);
             } else {
                 this.redirectTo(res, view, HttpServletResponse.SC_MOVED_TEMPORARILY);
@@ -198,26 +196,14 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
                 // render view
                 this.render(req, res, view);
             } else if (path.endsWith(".jspf")) {
-                // render view
                 this.render(req, res, view);
-            } else if (req.getMethod().equalsIgnoreCase("post")) {
+            } else if (req.getMethod().equalsIgnoreCase("put") || req.getMethod().equalsIgnoreCase("post")) {
                 this.redirectTo(res, view, HttpServletResponse.SC_SEE_OTHER);
             } else {
                 this.redirectTo(res, view, HttpServletResponse.SC_MOVED_TEMPORARILY);
             }
         }
     }
-
-    /**
-     * Handle a simple form submission
-     *
-     * @param request  web request
-     * @param response web response
-     * @param o        form object
-     * @param errors   error packet
-     * @throws Exception bad things
-     */
-    protected abstract void doSubmit(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception;
 
     /**
      * Get the URL location of the page on which the form is displayed.
@@ -239,13 +225,29 @@ public abstract class AbstractSimpleFormAction extends AbstractFormAction {
     protected abstract String getSuccessView(HttpServletRequest req, Object o) throws Exception;
 
     /**
-     * Optionally prepare the success view, typically by adding new parameters to the request
+     * Handle a simple form submission
      *
-     * @param req the HTTP servlet request
-     * @param o   the form object
+     * @param request  web request
+     * @param response web response
+     * @param o        form object
+     * @param errors   error packet
+     * @throws Exception bad things
      */
-    protected void prepareSuccessView(HttpServletRequest req, Object o) {
-        // This method intentionally left blank
+    protected void doPut(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+        // noop
+    }
+
+    /**
+     * Handle a simple form submission
+     *
+     * @param request  web request
+     * @param response web response
+     * @param o        form object
+     * @param errors   error packet
+     * @throws Exception bad things
+     */
+    protected void doPost(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+        // noop
     }
 
     /**

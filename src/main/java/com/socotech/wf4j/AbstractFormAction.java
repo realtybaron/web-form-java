@@ -99,7 +99,7 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @return true, if form submission is detected
      */
     protected boolean isFormSubmission(HttpServletRequest request, Object o) {
-        return "POST".equalsIgnoreCase(request.getMethod());
+        return "put".equalsIgnoreCase(request.getMethod()) || "post".equalsIgnoreCase(request.getMethod());
     }
 
     /**

@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="72fe8ed3-4ecb-4618-b2c2-4b5af4a7545e" name="Default" comment="don't remove session form objects from session">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java" />
+    <list default="true" id="72fe8ed3-4ecb-4618-b2c2-4b5af4a7545e" name="Default" comment="">
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" afterPath="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java" afterPath="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractSimpleFormActionTest.java" />
     </list>
     <ignored path="$PROJECT_DIR$/.gradle/" />
     <ignored path="$PROJECT_DIR$/build/" />
@@ -58,24 +58,12 @@
     </system>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file leaf-file-name="AbstractAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
+            <state relative-caret-position="135">
               <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AbstractMethodAction.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="165">
-              <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -84,7 +72,7 @@
       <file leaf-file-name="WF4JController.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="395">
+            <state relative-caret-position="780">
               <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
               <folding />
             </state>
@@ -94,8 +82,23 @@
       <file leaf-file-name="AbstractSimpleFormAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="90">
-              <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
+            <state relative-caret-position="3600">
+              <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+              <folding>
+                <element signature="e#6701#6702#0" expanded="true" />
+                <element signature="e#6778#6779#0" expanded="true" />
+                <element signature="e#6935#6936#0" expanded="true" />
+                <element signature="e#6991#6992#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AbstractWizardFormActionTest.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="407">
+              <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -104,11 +107,11 @@
       <file leaf-file-name="AbstractFormAction.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="43" column="55" lean-forward="true" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
+            <state relative-caret-position="455">
+              <caret line="528" column="43" lean-forward="false" selection-start-line="528" selection-start-column="43" selection-end-line="528" selection-end-column="43" />
               <folding>
-                <element signature="e#1484#1485#0" expanded="true" />
-                <element signature="e#1567#1568#0" expanded="true" />
+                <element signature="e#4043#4044#0" expanded="true" />
+                <element signature="e#4157#4158#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -126,8 +129,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>errors</find>
-      <find>&quot;errors&quot;</find>
       <find>form response</find>
       <find>finish</find>
       <find>bindon</find>
@@ -156,6 +157,8 @@
       <find>suppress</find>
       <find>removes</find>
       <find>void</find>
+      <find>post</find>
+      <find>doPost</find>
     </findStrings>
     <replaceStrings>
       <replace>Logger log = LoggerFactory</replace>
@@ -548,7 +551,6 @@
         <option value="$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AsynchronousFormAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/FormValidatorUtil.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/ByteArrayFileItem.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/Requests.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/CurrencyPropertyEditor.java" />
@@ -565,11 +567,12 @@
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WizardForm.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/DatePropertyEditor.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractWizardFormAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java" />
-        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WebExecutable.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java" />
+        <option value="$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java" />
       </list>
     </option>
   </component>
@@ -956,12 +959,6 @@
     <configuration />
   </component>
   <component name="TestHistory">
-    <history-entry file="AbstractWizardFormActionTest_testNext - 2017.02.25 at 18h 33m 17s.xml">
-      <configuration name="AbstractWizardFormActionTest.testNext" configurationId="GradleRunConfiguration" />
-    </history-entry>
-    <history-entry file="Tests_in_'wf4j_test' - 2017.02.24 at 11h 08m 48s.xml">
-      <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
-    </history-entry>
     <history-entry file="Tests_in_'wf4j_test' - 2017.02.25 at 18h 19m 37s.xml">
       <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
     </history-entry>
@@ -984,6 +981,12 @@
       <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
     </history-entry>
     <history-entry file="Tests_in_'wf4j_test' - 2017.03.14 at 08h 31m 54s.xml">
+      <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Tests_in_'wf4j_test' - 2017.03.15 at 06h 46m 09s.xml">
+      <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
+    </history-entry>
+    <history-entry file="Tests_in_'wf4j_test' - 2017.03.15 at 06h 46m 34s.xml">
       <configuration name="Tests in 'wf4j_test'" configurationId="GradleRunConfiguration" />
     </history-entry>
   </component>
@@ -1026,7 +1029,6 @@
   <component name="VcsManagerConfiguration">
     <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
     <option name="CHECK_NEW_TODO" value="false" />
-    <MESSAGE value="added 'newFormValidator' method" />
     <MESSAGE value="use @Form rather than Class to create validator instance" />
     <MESSAGE value="move &quot;error&quot; variable name into scope variable enum" />
     <MESSAGE value="removed superfluous default constructor" />
@@ -1051,7 +1053,8 @@
     <MESSAGE value="use SimpleDateFormat" />
     <MESSAGE value="don't remove session form objects from session prematurely" />
     <MESSAGE value="remove 'suppressBinding' method" />
-    <option name="LAST_COMMIT_MESSAGE" value="remove 'suppressBinding' method" />
+    <MESSAGE value="added 'method action'" />
+    <option name="LAST_COMMIT_MESSAGE" value="added 'method action'" />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
@@ -1091,13 +1094,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="75">
           <caret line="5" column="17" lean-forward="false" selection-start-line="5" selection-start-column="17" selection-end-line="5" selection-end-column="17" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JScopeVariable.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
         </state>
       </provider>
     </entry>
@@ -1197,13 +1193,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="221">
           <caret line="39" column="33" lean-forward="false" selection-start-line="39" selection-start-column="33" selection-end-line="39" selection-end-column="33" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="24" column="89" lean-forward="true" selection-start-line="24" selection-start-column="89" selection-end-line="24" selection-end-column="89" />
         </state>
       </provider>
     </entry>
@@ -1338,7 +1327,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="620">
           <caret line="313" column="42" lean-forward="false" selection-start-line="313" selection-start-column="42" selection-end-line="313" selection-end-column="42" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1354,7 +1342,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="231">
           <caret line="64" column="64" lean-forward="false" selection-start-line="64" selection-start-column="64" selection-end-line="64" selection-end-column="64" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1365,48 +1352,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="90">
-          <caret line="18" column="65" lean-forward="false" selection-start-line="18" selection-start-column="65" selection-end-line="18" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="43" column="55" lean-forward="true" selection-start-line="43" selection-start-column="55" selection-end-line="43" selection-end-column="55" />
-          <folding>
-            <element signature="e#1484#1485#0" expanded="true" />
-            <element signature="e#1567#1568#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="395">
-          <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/DatePropertyEditor.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="35">
           <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1414,7 +1363,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1426,10 +1374,58 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java">
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JController.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="165">
-          <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
+        <state relative-caret-position="780">
+          <caret line="69" column="33" lean-forward="false" selection-start-line="69" selection-start-column="33" selection-end-line="69" selection-end-column="33" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/WF4JScopeVariable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="2" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractMethodAction.java" />
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="135">
+          <caret line="17" column="31" lean-forward="false" selection-start-line="17" selection-start-column="31" selection-end-line="17" selection-end-column="31" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractFormAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="455">
+          <caret line="528" column="43" lean-forward="false" selection-start-line="528" selection-start-column="43" selection-end-line="528" selection-end-column="43" />
+          <folding>
+            <element signature="e#4043#4044#0" expanded="true" />
+            <element signature="e#4157#4158#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/java/com/socotech/wf4j/AbstractSimpleFormAction.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3600">
+          <caret line="252" column="0" lean-forward="false" selection-start-line="252" selection-start-column="0" selection-end-line="252" selection-end-column="0" />
+          <folding>
+            <element signature="e#6701#6702#0" expanded="true" />
+            <element signature="e#6778#6779#0" expanded="true" />
+            <element signature="e#6935#6936#0" expanded="true" />
+            <element signature="e#6991#6992#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/test/java/com/socotech/wf4j/AbstractWizardFormActionTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="407">
+          <caret line="59" column="0" lean-forward="false" selection-start-line="59" selection-start-column="0" selection-end-line="59" selection-end-column="0" />
           <folding />
         </state>
       </provider>
