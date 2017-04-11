@@ -345,6 +345,24 @@ public class WebUtil {
      * @param host     the host
      * @param cookie   the cookie name
      * @param value    the value you want it to have
+     */
+    public static void setCookie(HttpServletResponse response, String host, String cookie, String value) {
+        Cookie c = new Cookie(cookie, value);
+        c.setPath("/");
+        if (!host.equals("localhost")) {
+            c.setDomain(host);
+        }
+        response.addCookie(c);
+    }
+
+
+    /**
+     * Set cookie
+     *
+     * @param response An HTTP response
+     * @param host     the host
+     * @param cookie   the cookie name
+     * @param value    the value you want it to have
      * @param age      the maximum length of time for the cookie, in seconds
      */
     public static void setCookie(HttpServletResponse response, String host, String cookie, String value, int age) {
