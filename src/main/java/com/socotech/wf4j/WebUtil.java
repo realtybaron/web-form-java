@@ -74,7 +74,7 @@ public class WebUtil {
     public static void setSessionAttribute(HttpServletRequest request, String attr, Object value) {
         Validate.notNull(request, "Request is null");
         Validate.notEmpty(attr, "Attribute Name is null");
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         session.setAttribute(attr, value);
     }
 
@@ -87,7 +87,7 @@ public class WebUtil {
     public static void removeSessionAttribute(HttpServletRequest request, String attr) {
         Validate.notNull(request, "Request is null");
         Validate.notEmpty(attr, "Attribute Name is null");
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         session.removeAttribute(attr);
     }
 
@@ -101,7 +101,7 @@ public class WebUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T getOrCreateSessionAttribute(HttpServletRequest request, String attr, T defaultValue) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         Object value = session.getAttribute(attr);
         if (value != null) {
             return (T) value;
@@ -120,7 +120,7 @@ public class WebUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T getSessionAttribute(HttpServletRequest request, String attr) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         return (T) session.getAttribute(attr);
     }
 
@@ -191,7 +191,7 @@ public class WebUtil {
      */
     @SuppressWarnings("unchecked")
     public static <T> T getAndRemoveSessionAttribute(HttpServletRequest request, String attr) {
-        HttpSession session = request.getSession();
+        HttpSession session = request.getSession(true);
         Object value = session.getAttribute(attr);
         if (value != null) {
             session.removeAttribute(attr);
