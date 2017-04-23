@@ -279,10 +279,9 @@ public class WebUtil {
      * @param req form request
      */
     public static void dumpErrorsToRequest(HttpServletRequest req) {
-        String attrName = "errors";
-        FormErrors errors = WebUtil.getAndRemoveSessionAttribute(req, attrName);
+        FormErrors errors = WebUtil.getAndRemoveSessionAttribute(req, WF4JScopeVariable.error_list.name());
         if (errors != null && !errors.isEmpty()) {
-            req.setAttribute(attrName, errors);
+            req.setAttribute(WF4JScopeVariable.error_list.name(), errors);
         }
     }
 
