@@ -2,6 +2,7 @@ package com.socotech.wf4j;
 
 import java.beans.PropertyEditor;
 import java.io.IOException;
+import java.io.InputStream;
 import java.lang.reflect.Array;
 import java.lang.reflect.Field;
 import java.util.Arrays;
@@ -18,6 +19,8 @@ import javax.servlet.http.HttpServletResponse;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.google.common.collect.Sets;
+import com.google.common.io.ByteStreams;
+import com.google.common.io.Closeables;
 import org.apache.commons.beanutils.BeanUtils;
 import org.apache.commons.beanutils.PropertyUtils;
 import org.apache.commons.fileupload.FileItem;
@@ -25,7 +28,6 @@ import org.apache.commons.fileupload.FileItemFactory;
 import org.apache.commons.fileupload.FileUploadException;
 import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
-import org.apache.commons.io.IOUtils;
 import org.apache.commons.lang.StringUtils;
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.slf4j.Logger;
@@ -147,13 +149,16 @@ public abstract class AbstractFormAction extends AbstractAction {
                         }
                     } else {
                         // bind uploaded files to form object now instead of below
+                        InputStream in = fitem.getInputStream();
                         try {
-                            byte[] bytes = IOUtils.toByteArray(fitem.getInputStream());
+                            byte[] bytes = ByteStreams.toByteArray(in);
                             BeanUtils.setProperty(o, name, bytes);
                         } catch (Exception e) {
                             if (!errors.isSet(name)) {  // don't overwrite existing property error
                                 errors.put(name, ExceptionUtils.getRootCauseMessage(e));
                             }
+                        } finally {
+                            Closeables.close(in, true);
                         }
                     }
                 }
