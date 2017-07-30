@@ -15,7 +15,7 @@ repositories {
 dependencies {
     compile group: 'org.json', name: 'json', version: '20160810'
     compile group: 'org.slf4j', name: 'slf4j-api', version: '1.7.22'
-    compile group: 'com.google.guava', name: 'guava', version: '19.0'
+    compile group: 'com.google.guava', name: 'guava', version: '20.0'
     compile group: 'com.google.inject', name: 'guice', version: '4.1.0'
     compile group: 'org.reflections', name: 'reflections', version: '0.9.10'
     compile group: 'javax.servlet', name: 'servlet-api', version: '2.5'
