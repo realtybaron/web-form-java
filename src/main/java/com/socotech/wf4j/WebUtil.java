@@ -180,7 +180,7 @@ public class WebUtil {
     }
 
     /**
-     * Retreive an attribute from the session and remove it to prevent future use
+     * Retrieve an attribute from the session and remove it to prevent future use
      *
      * @param request http request
      * @param attr    attribute name
@@ -213,7 +213,7 @@ public class WebUtil {
     }
 
     /**
-     * Retreive a required attribute from the session and remove it to prevent future use
+     * Retrieve a required attribute from the session and remove it to prevent future use
      *
      * @param req  http request
      * @param attr attribute name

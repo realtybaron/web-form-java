@@ -154,10 +154,9 @@ public abstract class AbstractWizardFormAction extends AbstractFormAction {
      * @throws Exception bad things
      */
     @Override
-    protected final boolean onBind(HttpServletRequest req, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+    protected final void onBind(HttpServletRequest req, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
         int pageNumber = WizardForm.class.cast(o).getPage();
         this.onBind(req, o, errors, pageNumber);
-        return false;
     }
 
     /**

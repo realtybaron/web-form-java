@@ -159,7 +159,7 @@ public class AbstractSimpleFormActionTest {
             form.setDoubl(3.14);
             form.setInteger(100);
             form.setString("foo");
-            form.setLongs(100l);
+            form.setLongs(100L);
             return form;
         }
 

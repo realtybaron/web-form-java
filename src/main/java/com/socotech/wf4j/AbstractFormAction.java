@@ -422,33 +422,39 @@ public abstract class AbstractFormAction extends AbstractAction {
                 // copy bean properties from request params
                 this.bindFormObject(req, o, errors);
                 // Allow actions to do their own work prior to form processing
-                if (!this.onBind(req, res, o, errors)) {
+                this.onBind(req, res, o, errors);
+                // got errors?
+                if (errors.isEmpty()) {
                     // Check privileges
-                    if (!this.meetsPrivilegeRequirements(req, res, o)) {
+                    if (this.meetsPrivilegeRequirements(req, res, o)) {
+                        // is it a form submission?
+                        if (this.isFormSubmission(req, o)) {
+                            // validate the form (optional)
+                            if (!this.suppressValidation(req, o, errors)) {
+                                this.validateFormObject(req, o, errors);
+                            }
+                            // allow for post-binding and post-validation processing
+                            this.onBindAndValidate(req, o, errors);
+                            // still no errors?
+                            if (errors.isEmpty()) {
+                                // no errors, continue to execute
+                                this.handleFormSubmission(req, res, o, errors);
+                                // clean up after successful form submission
+                                if (!form.sessionForm()) {
+                                    WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
+                                }
+                            } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
+                                this.onBindingAndValidationErrors(req, res, o, errors);
+                            } else {
+                                this.showForm(req, res, o, errors);
+                            }
+                        } else {
+                            this.showForm(req, res, o, errors);
+                        }
+                    } else {
                         this.handleUnauthorized(req, res);
                     }
-                    if (this.isFormSubmission(req, o)) {
-                        // validate the form (optional)
-                        if (!this.suppressValidation(req, o, errors)) {
-                            this.validateFormObject(req, o, errors);
-                        }
-                        // allow for post-binding and post-validation processing
-                        this.onBindAndValidate(req, o, errors);
-                        // still no errors?
-                        if (errors.isEmpty()) {
-                            // no errors, continue to execute
-                            this.handleFormSubmission(req, res, o, errors);
-                            // clean up after successful form submission
-                            if (!form.sessionForm()) {
-                                WebUtil.removeSessionAttribute(req, getSessionAttributeName(form));
-                            }
-                            return; // successful form submission...exit now!
-                        } else if (this.handleBindingAndValidationErrors(req, o, errors)) {
-                            this.onBindingAndValidationErrors(req, res, o, errors);
-                            return; // errors handled...exit now!
-                        }
-                    }
-                    // either not a form submission or unhandled errors produced from binding and validation.  In any event, show the form.
+                } else {
                     this.showForm(req, res, o, errors);
                 }
             } catch (Exception e) {
@@ -464,9 +470,10 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @param request  web request
      * @param response web response
      * @return true, if you are redirecting the request outside of the process.
-     * @throws IOException i/o error
+     * @throws IOException      i/o error
      * @throws ServletException servlet exception
      */
+    @Deprecated
     protected boolean redirectRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         return false;
     }
@@ -490,12 +497,11 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @param response web response
      * @param o        form object
      * @param errors   error packet
-     * @return true, if further processing should be halted
      * @throws Exception any show stoppers
      * @see #onBindAndValidate for preferred usage
      */
-    protected boolean onBind(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
-        return false;
+    protected void onBind(HttpServletRequest request, HttpServletResponse response, Object o, FormErrors errors) throws Exception {
+        // noop
     }
 
     /**

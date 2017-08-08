@@ -43,9 +43,8 @@ public class PercentPropertyEditor extends PropertyEditorSupport {
             try {
                 String _text = text;
                 _text = StringUtils.remove(_text, '%');
-                BigDecimal oneHundred = BigDecimal.valueOf(100d);
                 BigDecimal bigNumber = new BigDecimal(_text);
-                this.setValue(bigNumber.divide(oneHundred, this.scale + 2, RoundingMode.HALF_UP));
+                this.setValue(bigNumber.divide(hundred, this.scale + 2, RoundingMode.HALF_UP));
             } catch (IllegalArgumentException iae) {
                 // Re-throw but with a friendlier error message
                 String ex = "Please enter a number in the format '" + this.numberFormat.format(0.999999) + "'";
@@ -57,4 +56,6 @@ public class PercentPropertyEditor extends PropertyEditorSupport {
             this.setValue(null);
         }
     }
+
+    private static final BigDecimal hundred = BigDecimal.valueOf(100d);
 }
