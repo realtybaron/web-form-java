@@ -311,7 +311,7 @@ public abstract class AbstractFormAction extends AbstractAction {
      * @param o        web form
      * @return true, if user meets privilege requirements
      */
-    public boolean meetsPrivilegeRequirements(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
+    public boolean isAuthorized(HttpServletRequest request, HttpServletResponse response, Object o) throws Exception {
         return true;
     }
 
@@ -426,7 +426,7 @@ public abstract class AbstractFormAction extends AbstractAction {
                 // got errors?
                 if (errors.isEmpty()) {
                     // Check privileges
-                    if (this.meetsPrivilegeRequirements(req, res, o)) {
+                    if (this.isAuthorized(req, res, o)) {
                         // is it a form submission?
                         if (this.isFormSubmission(req, o)) {
                             // validate the form (optional)
