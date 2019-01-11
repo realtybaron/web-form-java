@@ -1,13 +1,13 @@
 package com.socotech.wf4j;
 
+import org.apache.commons.lang.StringUtils;
+import org.apache.commons.lang.math.NumberUtils;
+
 import java.beans.PropertyEditorSupport;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
 import java.util.Currency;
-
-import org.apache.commons.lang.StringUtils;
-import org.apache.commons.lang.math.NumberUtils;
 
 /**
  * Converts between a currency value's numeric and textual representation
@@ -24,11 +24,11 @@ public class CurrencyPropertyEditor extends PropertyEditorSupport {
     public final NumberFormat numberFormat = NumberFormat.getCurrencyInstance();
 
     public CurrencyPropertyEditor() {
-        this(Currency.getInstance("USD"), RoundingMode.HALF_EVEN, false);
+        this(Currency.getInstance("USD"), RoundingMode.HALF_EVEN, true);
     }
 
     public CurrencyPropertyEditor(Currency currency) {
-        this(currency, RoundingMode.HALF_EVEN, false);
+        this(currency, RoundingMode.HALF_EVEN, true);
     }
 
     public CurrencyPropertyEditor(boolean allowEmpty) {
@@ -36,7 +36,7 @@ public class CurrencyPropertyEditor extends PropertyEditorSupport {
     }
 
     public CurrencyPropertyEditor(Currency currency, int scale) {
-        this(currency, scale, RoundingMode.HALF_EVEN, false);
+        this(currency, scale, RoundingMode.HALF_EVEN, true);
     }
 
     public CurrencyPropertyEditor(RoundingMode rounding, boolean allowEmpty) {
@@ -71,9 +71,7 @@ public class CurrencyPropertyEditor extends PropertyEditorSupport {
     }
 
     public void setAsText(String text) throws IllegalArgumentException {
-        if (this.allowEmpty && StringUtils.isEmpty(text)) {
-            setValue(null);
-        } else {
+        if (StringUtils.isNotEmpty(text)) {
             try {
                 String _text = text;
                 _text = StringUtils.remove(_text, this.currency.getSymbol());
@@ -87,6 +85,10 @@ public class CurrencyPropertyEditor extends PropertyEditorSupport {
                 String ex = "Please enter a number in the format '" + this.numberFormat.format(999.99) + "'";
                 throw new IllegalArgumentException(ex);
             }
+        } else if (!this.allowEmpty) {
+            throw new IllegalArgumentException("Text cannot be empty");
+        } else {
+            super.setValue(null);
         }
     }
 }

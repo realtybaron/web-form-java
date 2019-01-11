@@ -1,11 +1,11 @@
 package com.socotech.wf4j;
 
+import org.apache.commons.lang.StringUtils;
+
 import java.beans.PropertyEditorSupport;
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 import java.text.NumberFormat;
-
-import org.apache.commons.lang.StringUtils;
 
 /**
  * User: marc Date: Jul 6, 2008 Time: 9:51:49 AM
@@ -53,7 +53,7 @@ public class PercentPropertyEditor extends PropertyEditorSupport {
         } else if (!this.allowEmpty) {
             throw new IllegalArgumentException("Text cannot be empty");
         } else {
-            this.setValue(null);
+            super.setValue(null);
         }
     }
 
